@@ -14,6 +14,7 @@ const translations = {
     // Navigation
     'nav.about': 'About',
     'nav.projects': 'Projects',
+    'nav.blog': 'Blog',
     'nav.resume': 'Resume',
     
     // Hero
@@ -36,6 +37,16 @@ const translations = {
     // Toolkit
     'toolkit.title': 'Technical Toolkit',
     
+    // Blog
+    'blog.title': 'Writing',
+    'blog.minRead': '{min} min read',
+    'blog.post1.title': 'From Blueprints to Backends: My Journey into Software',
+    'blog.post1.excerpt': 'How architectural thinking shaped my approach to building scalable systems.',
+    'blog.post2.title': 'Building Real-Time Systems with Elixir and Go',
+    'blog.post2.excerpt': 'Lessons learned from developing Ayno, a high-performance messaging engine.',
+    'blog.post3.title': 'The Art of Clean Code Architecture',
+    'blog.post3.excerpt': 'Applying structural design principles to create maintainable software.',
+    
     // Footer
     'footer.cta': "Let's build something structural.",
     'footer.copyright': 'Built with precision.',
@@ -44,6 +55,7 @@ const translations = {
     // Navigation
     'nav.about': 'نبذة',
     'nav.projects': 'المشاريع',
+    'nav.blog': 'المدونة',
     'nav.resume': 'السيرة الذاتية',
     
     // Hero
@@ -65,6 +77,16 @@ const translations = {
     
     // Toolkit
     'toolkit.title': 'الأدوات التقنية',
+    
+    // Blog
+    'blog.title': 'الكتابات',
+    'blog.minRead': '{min} دقائق قراءة',
+    'blog.post1.title': 'من المخططات إلى الباك إند: رحلتي في البرمجة',
+    'blog.post1.excerpt': 'كيف شكّل التفكير المعماري منهجي في بناء أنظمة قابلة للتوسع.',
+    'blog.post2.title': 'بناء أنظمة الوقت الفعلي باستخدام Elixir و Go',
+    'blog.post2.excerpt': 'دروس مستفادة من تطوير Ayno، محرك رسائل عالي الأداء.',
+    'blog.post3.title': 'فن هندسة الكود النظيف',
+    'blog.post3.excerpt': 'تطبيق مبادئ التصميم الهيكلي لإنشاء برمجيات قابلة للصيانة.',
     
     // Footer
     'footer.cta': 'لنبني شيئاً متيناً معاً.',
