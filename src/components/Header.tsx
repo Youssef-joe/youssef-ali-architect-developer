@@ -27,19 +27,25 @@ const Header = () => {
           YA
         </button>
 
-        <div className="flex items-center gap-6 md:gap-8">
+        <div className="flex items-center gap-4 md:gap-6">
           <LanguageSwitch />
           <button
             onClick={() => scrollToSection('about')}
-            className="nav-link text-sm"
+            className="nav-link text-sm hidden sm:block"
           >
             {t('nav.about')}
           </button>
           <button
             onClick={() => scrollToSection('projects')}
-            className="nav-link text-sm"
+            className="nav-link text-sm hidden sm:block"
           >
             {t('nav.projects')}
+          </button>
+          <button
+            onClick={() => scrollToSection('blog')}
+            className="nav-link text-sm hidden sm:block"
+          >
+            {t('nav.blog')}
           </button>
           <a
             href="#resume"
