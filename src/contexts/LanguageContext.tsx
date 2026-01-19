@@ -18,7 +18,7 @@ const translations = {
     
     // Hero
     'hero.name': 'Youssef Ali',
-    'hero.title': 'Software Developer & Ex-Architect',
+    'hero.title': 'Software Developer',
     'hero.subtitle': 'Building scalable, user-focused solutions in Cairo.',
     'hero.role': 'Currently Head of Back-End at GDG Cairo.',
     'hero.building': 'Building at',
@@ -48,7 +48,7 @@ const translations = {
     
     // Hero
     'hero.name': 'يوسف علي',
-    'hero.title': 'مطور برمجيات ومهندس معماري سابق',
+    'hero.title': 'مطور برمجيات',
     'hero.subtitle': 'أبني حلولاً قابلة للتوسع تركز على المستخدم في القاهرة.',
     'hero.role': 'حالياً رئيس قسم الباك إند في GDG Cairo.',
     'hero.building': 'أعمل في',
