@@ -7,6 +7,7 @@ export function useTextScramble(finalText: string, delay: number = 0) {
   const [isComplete, setIsComplete] = useState(false);
 
   const scramble = useCallback(() => {
+    setIsComplete(false);
     let iteration = 0;
     const totalIterations = finalText.length * 3;
 
@@ -19,6 +20,10 @@ export function useTextScramble(finalText: string, delay: number = 0) {
               return finalText[index];
             }
             if (char === ' ') return ' ';
+            // For Arabic characters, just reveal them
+            if (/[\u0600-\u06FF]/.test(char)) {
+              return index < iteration / 3 ? char : '_';
+            }
             return chars[Math.floor(Math.random() * chars.length)];
           })
           .join('')

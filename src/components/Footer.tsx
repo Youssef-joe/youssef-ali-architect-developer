@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer className="py-20">
       <div className="container-narrow">
@@ -13,7 +16,7 @@ const Footer = () => {
           className="text-center"
         >
           <p className="heading-md mb-8 text-balance">
-            Let's build something structural.
+            {t('footer.cta')}
           </p>
 
           <div className="flex items-center justify-center gap-6">
@@ -45,7 +48,7 @@ const Footer = () => {
           </div>
 
           <p className="mt-12 text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Youssef Ali. Built with precision.
+            © {new Date().getFullYear()} {t('hero.name')}. {t('footer.copyright')}
           </p>
         </motion.div>
       </div>

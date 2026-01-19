@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSwitch from './LanguageSwitch';
 
 const Header = () => {
+  const { t } = useLanguage();
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -23,24 +27,25 @@ const Header = () => {
           YA
         </button>
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-6 md:gap-8">
+          <LanguageSwitch />
           <button
             onClick={() => scrollToSection('about')}
             className="nav-link text-sm"
           >
-            About
+            {t('nav.about')}
           </button>
           <button
             onClick={() => scrollToSection('projects')}
             className="nav-link text-sm"
           >
-            Projects
+            {t('nav.projects')}
           </button>
           <a
             href="#resume"
             className="btn-resume"
           >
-            Resume
+            {t('nav.resume')}
           </a>
         </div>
       </nav>

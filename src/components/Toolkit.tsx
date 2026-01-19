@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const technologies = [
   'TypeScript',
@@ -14,6 +15,8 @@ const technologies = [
 ];
 
 const Toolkit = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="py-32 bg-secondary/30">
       <div className="container-narrow">
@@ -24,7 +27,7 @@ const Toolkit = () => {
           viewport={{ once: true, margin: '-100px' }}
           className="heading-lg mb-12"
         >
-          Technical Toolkit
+          {t('toolkit.title')}
         </motion.h2>
 
         <motion.div
