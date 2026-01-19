@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { useTextScramble } from '@/hooks/useTextScramble';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero = () => {
-  const { displayText, isComplete } = useTextScramble('Youssef Ali', 600);
+  const { t, language } = useLanguage();
+  const { displayText, isComplete } = useTextScramble(t('hero.name'), 600);
 
   return (
     <section id="about" className="min-h-screen flex flex-col justify-center pt-20">
@@ -21,6 +23,7 @@ const Hero = () => {
 
         {/* Headline with scramble effect */}
         <motion.h1
+          key={language}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3, delay: 0.3 }}
@@ -32,7 +35,7 @@ const Hero = () => {
           </span>
           <br />
           <span className="text-muted-foreground">
-            Software Developer & Ex-Architect
+            {t('hero.title')}
           </span>
         </motion.h1>
 
@@ -43,9 +46,9 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="body-text max-w-lg mb-8"
         >
-          Building scalable, user-focused solutions in Cairo.
+          {t('hero.subtitle')}
           <br />
-          Currently Head of Back-End at GDG Cairo.
+          {t('hero.role')}
         </motion.p>
 
         {/* Current Role Card */}
@@ -56,9 +59,9 @@ const Hero = () => {
         >
           <div className="role-card">
             <span className="pulse-dot" />
-            <span className="text-muted-foreground">Building at</span>
+            <span className="text-muted-foreground">{t('hero.building')}</span>
             <span className="font-medium text-foreground">Infotech Global</span>
-            <span className="text-muted-foreground">— Software Engineer</span>
+            <span className="text-muted-foreground">{t('hero.position')}</span>
           </div>
         </motion.div>
       </div>

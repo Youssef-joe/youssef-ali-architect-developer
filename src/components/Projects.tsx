@@ -1,25 +1,30 @@
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-
-const projects = [
-  {
-    title: 'Novel Nest',
-    description: 'AI-powered Book Platform with real-time collaboration features',
-    tech: ['Next.js', 'Go', 'WebRTC'],
-  },
-  {
-    title: 'Ayno',
-    description: 'Real-time messaging engine built for scale and reliability',
-    tech: ['Elixir', 'Go', 'C++'],
-  },
-  {
-    title: 'Fantasy',
-    description: 'Predictive football analytics tool using machine learning',
-    tech: ['Python', 'Scikit-learn', 'FastAPI'],
-  },
-];
+import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Projects = () => {
+  const { t, isRTL } = useLanguage();
+
+  const projects = [
+    {
+      title: t('projects.novel.title'),
+      description: t('projects.novel.desc'),
+      tech: ['Next.js', 'Go', 'WebRTC'],
+    },
+    {
+      title: t('projects.ayno.title'),
+      description: t('projects.ayno.desc'),
+      tech: ['Elixir', 'Go', 'C++'],
+    },
+    {
+      title: t('projects.fantasy.title'),
+      description: t('projects.fantasy.desc'),
+      tech: ['Python', 'Scikit-learn', 'FastAPI'],
+    },
+  ];
+
+  const Arrow = isRTL ? ArrowLeft : ArrowRight;
+
   return (
     <section id="projects" className="py-32">
       <div className="container-narrow">
@@ -30,7 +35,7 @@ const Projects = () => {
           viewport={{ once: true, margin: '-100px' }}
           className="heading-lg mb-12"
         >
-          Selected Projects
+          {t('projects.title')}
         </motion.h2>
 
         <div className="space-y-8">
@@ -51,7 +56,7 @@ const Projects = () => {
                   <div className="flex-1">
                     <h3 className="heading-md mb-2 flex items-center gap-2 group-hover:text-muted-foreground transition-colors duration-300">
                       {project.title}
-                      <ArrowRight className="project-arrow w-5 h-5" />
+                      <Arrow className="project-arrow w-5 h-5" />
                     </h3>
                     <p className="body-text mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2">
