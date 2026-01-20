@@ -1,24 +1,29 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Blog = () => {
   const { t, isRTL } = useLanguage();
+  const navigate = useNavigate();
 
   const posts = [
     {
+      id: '1',
       title: t('blog.post1.title'),
       excerpt: t('blog.post1.excerpt'),
       date: '2024-01-15',
       readTime: t('blog.minRead').replace('{min}', '5'),
     },
     {
+      id: '2',
       title: t('blog.post2.title'),
       excerpt: t('blog.post2.excerpt'),
       date: '2024-01-08',
       readTime: t('blog.minRead').replace('{min}', '8'),
     },
     {
+      id: '3',
       title: t('blog.post3.title'),
       excerpt: t('blog.post3.excerpt'),
       date: '2023-12-20',
@@ -60,9 +65,9 @@ const Blog = () => {
               viewport={{ once: true, margin: '-50px' }}
               className="group"
             >
-              <a
-                href="#"
-                className="block py-6 border-b border-border hover:border-foreground transition-colors duration-300"
+              <button
+                onClick={() => navigate(`/blog/${post.id}`)}
+                className="w-full text-left block py-6 border-b border-border hover:border-foreground transition-colors duration-300"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
@@ -78,7 +83,7 @@ const Blog = () => {
                     <p className="body-text">{post.excerpt}</p>
                   </div>
                 </div>
-              </a>
+              </button>
             </motion.article>
           ))}
         </div>
