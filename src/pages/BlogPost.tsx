@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Star, Share2, Twitter, Linkedin, Copy, Check } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Star, Share2, Twitter, Linkedin, Copy, Check } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -13,6 +13,10 @@ const BlogPost = () => {
   const [rating, setRating] = useState<number>(0);
   const [userRating, setUserRating] = useState<number>(0);
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Blog posts data with full content
   const blogPosts: Record<string, {
@@ -28,9 +32,42 @@ const BlogPost = () => {
       date: '2024-01-15',
       readTime: t('blog.minRead').replace('{min}', '5'),
       content: `
-        <p>This is the full content of the first blog post. You can add detailed information, code snippets, images, and more here.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p class="mb-6 leading-relaxed">Architecture is often misunderstood as just "building things." But whether you're designing a skyscraper or a distributed system, the core principles remain the same: stability, scalability, and purpose. In my transition from architectural engineering to software development, I found that the patterns I learned in the studio were surprisingly applicable to the codebase.</p>
+        
+        <h3 class="heading-md mt-10 mb-4">The Foundation: Structural Integrity</h3>
+        <p class="mb-4 leading-relaxed">In physical architecture, a weak foundation leads to collapse. In software, a weak architectural foundation leads to technical debt and system failure. My background in architecture taught me to see the "load-bearing walls" of a software project before writing a single line of code.</p>
+        <p class="mb-6 leading-relaxed">Consider the "Blueprint Pattern." Before pouring concrete, we draft detailed plans. Similarly, in software, defining your data schemas and API contracts upfront is crucial.</p>
+        
+        <div class="bg-secondary/30 p-6 rounded-lg mb-8 font-mono text-sm overflow-x-auto">
+          <p class="text-muted-foreground mb-2">// Defining the "Blueprint" (Schema) first</p>
+          <pre><code class="language-typescript">interface Building {
+  id: string;
+  foundationType: 'concrete' | 'piling';
+  floors: number;
+  occupancyLimit: number;
+  metadata: Record<string, unknown>;
+}
+
+// The implementation must respect the structural constraints
+class Skyscraper implements Building {
+  constructor(
+    public id: string,
+    public floors: number
+  ) {
+    this.foundationType = 'piling'; // Deep foundation required
+    this.occupancyLimit = floors * 200;
+  }
+  // ...
+}</code></pre>
+        </div>
+
+        <h3 class="heading-md mt-10 mb-4">Space and Flow</h3>
+        <p class="mb-4 leading-relaxed">Just as a building dictates how people move through space, software architecture dictates how data flows through a system. Designing efficient data pipelines is akin to designing efficient circulation paths in a busy terminal. You want to minimize friction and bottlenecks.</p>
+        
+        <h3 class="heading-md mt-10 mb-4">The Modular Approach</h3>
+        <p class="mb-6 leading-relaxed">Modern architecture often utilizes modular components to speed up construction and ensure consistency. In software, we use microservices or component-based UI libraries for the same reason.</p>
+
+        <p class="mb-4 leading-relaxed">Transitioning to software engineering wasn't a change of career, but a change of medium. I swapped concrete for code, but the structural thinking remains. The tools change, but the need for robust, scalable design is universal.</p>
       `,
     },
     '2': {
@@ -39,9 +76,55 @@ const BlogPost = () => {
       date: '2024-01-08',
       readTime: t('blog.minRead').replace('{min}', '8'),
       content: `
-        <p>This is the full content of the second blog post.</p>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="mb-6 leading-relaxed">When building <strong>Ayno</strong>, our real-time messaging engine, we faced a classic dilemma: how to handle millions of concurrent connections without sacrificing raw computational performance. We needed the high concurrency of Erlang and the raw speed of Go.</p>
+        
+        <h3 class="heading-md mt-10 mb-4">The Elixir Advantage: Concurrency</h3>
+        <p class="mb-4 leading-relaxed">Elixir, running on the BEAM VM, is a beast when it comes to concurrency. Its actor model allows us to spawn millions of lightweight processes, each handling a user session. If one crashes, it doesn't bring down the system. This fault tolerance is crucial for a messaging platform.</p>
+        
+        <div class="bg-secondary/30 p-6 rounded-lg mb-8 font-mono text-sm overflow-x-auto">
+          <p class="text-muted-foreground mb-2"># Elixir GenServer handling a user session</p>
+          <pre><code class="language-elixir">defmodule Ayno.Session do
+  use GenServer
+
+  def start_link(user_id) do
+    GenServer.start_link(__MODULE__, user_id, name: via_tuple(user_id))
+  end
+
+  def init(user_id) do
+    # Lightweight process for each user
+    {:ok, %{user_id: user_id, status: :online}}
+  end
+
+  def handle_cast({:send_message, msg}, state) do
+    # Handle message routing asynchronously
+    PubSub.broadcast("chat_room", msg)
+    {:noreply, state}
+  end
+end</code></pre>
+        </div>
+
+        <h3 class="heading-md mt-10 mb-4">Where Go Shines: Raw Performance</h3>
+        <p class="mb-4 leading-relaxed">However, for CPU-intensive tasks like message serialization, heavy JSON parsing, and database batching, we turned to Go. Its static typing and raw speed complement Elixir's dynamic nature perfectly.</p>
+        
+        <div class="bg-secondary/30 p-6 rounded-lg mb-8 font-mono text-sm overflow-x-auto">
+          <p class="text-muted-foreground mb-2">// Go service for heavy lifting</p>
+          <pre><code class="language-go">type MessageProcessor struct {
+    Queue chan Message
+}
+
+func (p *MessageProcessor) StartWorker() {
+    for msg := range p.Queue {
+        // High-performance serialization
+        data, _ := proto.Marshal(&msg)
+        
+        // Batch insert to DB
+        db.BatchInsert(data)
+    }
+}</code></pre>
+        </div>
+
+        <h3 class="heading-md mt-10 mb-4">The Hybrid Approach</h3>
+        <p class="mb-4 leading-relaxed">We built a system where Elixir manages the WebSocket connections and state, while Go microservices handle the heavy lifting. Communication happens via gRPC, ensuring low latency. This hybrid architecture gives us the best of both worlds: the reliability of Erlang and the speed of Go.</p>
       `,
     },
     '3': {
@@ -50,9 +133,45 @@ const BlogPost = () => {
       date: '2023-12-20',
       readTime: t('blog.minRead').replace('{min}', '6'),
       content: `
-        <p>This is the full content of the third blog post.</p>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-        <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        <p class="mb-6 leading-relaxed">Clean code isn't just about formatting or variable naming. It's about creating a system that is easy to understand, easy to change, and easy to maintain. In my experience, the biggest killer of software projects isn't bugs—it's unmaintainable complexity.</p>
+        
+        <h3 class="heading-md mt-10 mb-4">Separation of Concerns</h3>
+        <p class="mb-4 leading-relaxed">One of the most important principles I follow is the Separation of Concerns. Your business logic shouldn't know about your database schema, and your UI shouldn't know about your API implementation. By decoupling these layers, we make the system more robust.</p>
+        
+        <h3 class="heading-md mt-10 mb-4">Dependency Inversion in Practice</h3>
+        <p class="mb-4 leading-relaxed">Applying SOLID principles helps in avoiding tight coupling. The Dependency Inversion Principle allows us to swap out implementations without rewriting core logic. Here is how I structure my services:</p>
+        
+        <div class="bg-secondary/30 p-6 rounded-lg mb-8 font-mono text-sm overflow-x-auto">
+          <p class="text-muted-foreground mb-2">// Define the contract (Interface)</p>
+          <pre><code class="language-typescript">interface StorageService {
+  save(file: File): Promise<string>;
+  delete(id: string): Promise<void>;
+}
+
+// Implementation A: AWS S3
+class S3Storage implements StorageService {
+  async save(file: File) { /* ...upload to S3... */ }
+  async delete(id: string) { /* ...delete from S3... */ }
+}
+
+// Implementation B: Local Disk (for dev)
+class LocalStorage implements StorageService {
+  async save(file: File) { /* ...save to disk... */ }
+  async delete(id: string) { /* ...delete from disk... */ }
+}
+
+// The core logic doesn't care which one is used
+class FileManager {
+  constructor(private storage: StorageService) {}
+  
+  async handleUpload(file: File) {
+    await this.storage.save(file);
+  }
+}</code></pre>
+        </div>
+
+        <h3 class="heading-md mt-10 mb-4">Why It Matters</h3>
+        <p class="mb-4 leading-relaxed">Good architecture is invisible. When it works, you don't notice it. But when it's bad, every new feature becomes a struggle. By investing time in clean architecture upfront, we buy ourselves speed and agility in the future.</p>
       `,
     },
   };
