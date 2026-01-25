@@ -10,16 +10,19 @@ const Projects = () => {
       title: t('projects.novel.title'),
       description: t('projects.novel.desc'),
       tech: ['Next.js', 'Go', 'WebRTC'],
+      link: 'https://github.com/orgs/novelNestRepo/repositories',
     },
     {
       title: t('projects.ayno.title'),
       description: t('projects.ayno.desc'),
       tech: ['Elixir', 'Go', 'C++'],
+      link: 'https://ayno.obl.ee',
     },
     {
       title: t('projects.fantasy.title'),
       description: t('projects.fantasy.desc'),
       tech: ['Python', 'Scikit-learn', 'FastAPI'],
+      link: 'https://github.com/Youssef-joe/Fantasy',
     },
   ];
 
@@ -49,7 +52,9 @@ const Projects = () => {
               className="project-card group"
             >
               <a
-                href="#"
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block py-6 border-b border-border hover:border-foreground transition-colors duration-300"
               >
                 <div className="flex items-start justify-between gap-4">
