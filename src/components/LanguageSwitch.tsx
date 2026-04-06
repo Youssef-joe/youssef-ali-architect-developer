@@ -6,7 +6,7 @@ const LanguageSwitch = () => {
   return (
     <button
       onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-      className="text-sm font-mono text-muted-foreground hover:text-foreground transition-colors duration-200"
+      className="text-sm font-mono text-white/70 hover:text-white transition-colors duration-200"
       aria-label="Switch language"
     >
       {language === 'en' ? 'عربي' : 'EN'}

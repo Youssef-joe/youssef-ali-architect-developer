@@ -2,186 +2,280 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Swiss Design Portfolio - Monochrome Design System */
+/* Apple-inspired portfolio design */
 
 @layer base {
   :root {
-    /* Monochrome palette */
-    --background: 0 0% 97.6%; /* #F9F9F9 */
-    --foreground: 0 0% 10.2%; /* #1A1A1A */
-
+    --background: 240 14% 97%;
+    --foreground: 231 6% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10.2%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10.2%;
-
-    --primary: 0 0% 10.2%; /* Charcoal */
-    --primary-foreground: 0 0% 97.6%;
-
-    --secondary: 0 0% 94%;
-    --secondary-foreground: 0 0% 10.2%;
-
-    --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 40%;
-
-    --accent: 0 0% 88%;
-    --accent-foreground: 0 0% 10.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
+    --card-foreground: 231 6% 12%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 231 6% 12%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 48%;
+    --primary: 231 6% 12%;
+    --primary-foreground: 0 0% 100%;
+    --accent: 214 100% 44%;
+    --link-dark: 212 100% 40%;
+    --link-light: 204 100% 63%;
     --border: 0 0% 88%;
     --input: 0 0% 88%;
-    --ring: 0 0% 10.2%;
-
+    --ring: 214 100% 44%;
     --radius: 0.5rem;
-
-    /* Typography */
-    --font-sans: 'Inter', system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
-
-    /* Spacing */
-    --content-width: 800px;
-  }
-
-  .dark {
-    --background: 0 0% 10.2%;
-    --foreground: 0 0% 97.6%;
-
-    --card: 0 0% 14%;
-    --card-foreground: 0 0% 97.6%;
-
-    --popover: 0 0% 14%;
-    --popover-foreground: 0 0% 97.6%;
-
-    --primary: 0 0% 97.6%;
-    --primary-foreground: 0 0% 10.2%;
-
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 97.6%;
-
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 60%;
-
-    --accent: 0 0% 24%;
-    --accent-foreground: 0 0% 97.6%;
-
-    --border: 0 0% 24%;
-    --input: 0 0% 24%;
-    --ring: 0 0% 97.6%;
+    --content-width: 980px;
+    --font-display: 'SF Pro Display', 'SF Pro Text', 'Inter', system-ui, sans-serif;
+    --font-text: 'SF Pro Text', 'SF Pro Display', 'Inter', system-ui, sans-serif;
+    --sk-focus-color: #0071e3;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
   html {
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: var(--font-sans);
+    font-family: var(--font-text);
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+    font-family: var(--font-display);
+    letter-spacing: -0.28px;
   }
 
   .font-mono {
-    font-family: var(--font-mono);
+    font-family: var(--font-text);
   }
 }
 
 @layer components {
-  /* Swiss Design Typography */
-  .heading-xl {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
-  }
-
-  .heading-lg {
-    @apply text-2xl md:text-3xl font-semibold;
-  }
-
-  .heading-md {
-    @apply text-xl md:text-2xl font-medium;
-  }
-
-  .body-text {
-    @apply text-base md:text-lg text-muted-foreground leading-relaxed;
-  }
-
-  /* Container */
   .container-narrow {
     @apply mx-auto px-6 md:px-8;
     max-width: var(--content-width);
   }
 
-  /* Project card hover arrow */
-  .project-arrow {
-    @apply opacity-0 translate-x-0 transition-all duration-300;
+  .heading-xl {
+    font-size: 3.5rem;
+    line-height: 1.07;
+    font-weight: 600;
+    letter-spacing: -0.28px;
+  }
+
+  .heading-lg {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: normal;
+  }
+
+  .heading-md {
+    font-size: 1.75rem;
+    line-height: 1.14;
+    font-weight: 400;
+    letter-spacing: 0.196px;
+  }
+
+  .card-title {
+    font-size: 1.31rem;
+    line-height: 1.19;
+    font-weight: 700;
+    letter-spacing: 0.231px;
+  }
+
+  .body-text {
+    font-family: var(--font-text);
+    font-size: 1.06rem;
+    line-height: 1.47;
+    letter-spacing: -0.374px;
+    color: hsl(var(--foreground));
+  }
+
+  .section-subtitle {
+    font-family: var(--font-text);
+    font-size: 1.06rem;
+    line-height: 1.47;
+    letter-spacing: -0.374px;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 640px;
+  }
+
+  .hero-caption {
+    font-size: 0.75rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .apple-cta {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-normal transition-all duration-200;
+    border: 1px solid transparent;
+  }
+
+  .apple-cta-primary {
+    background: #0071e3;
+    color: #fff;
+  }
+
+  .apple-cta-primary:hover {
+    background: #0d6ffb;
+  }
+
+  .apple-cta-outline {
+    background: transparent;
+    color: #0066cc;
+    border-color: #0066cc;
+  }
+
+  .apple-cta-outline:hover {
+    text-decoration: underline;
+  }
+
+  .apple-pill-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid #0066cc;
+    color: #0066cc;
+    background: transparent;
+    font-size: 0.98rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 160ms ease, border-color 160ms ease;
+  }
+
+  .apple-pill-link:hover {
+    text-decoration: underline;
+  }
+
+  .apple-card {
+    background: #fff;
+    border-radius: 1.25rem;
+    box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+    border: none;
+  }
+
+  .apple-card-dark {
+    background: #272729;
+    color: #fff;
+    border-radius: 1.25rem;
+    box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+    border: none;
+  }
+
+  .section-dark {
+    background: #000;
+    color: #fff;
+  }
+
+  .section-dark .body-text {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .section-light {
+    background: #f5f5f7;
+    color: #1d1d1f;
+  }
+
+  .section-light .heading-lg,
+  .section-light .heading-md,
+  .section-light .tile-heading,
+  .section-light .card-title {
+    color: #1d1d1f;
+  }
+
+  .section-light .body-text {
+    color: rgba(29, 29, 31, 0.8);
+  }
+
+  .section-light .apple-pill-link {
+    color: #0066cc;
+    border-color: #0066cc;
+  }
+
+  .section-dark .apple-pill-link {
+    color: #2997ff;
+    border-color: #2997ff;
+  }
+
+  .hero-panel {
+    max-width: 650px;
+  }
+
+  .feature-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .project-card {
+    @apply p-8;
   }
 
   .project-card:hover .project-arrow {
-    @apply opacity-100 translate-x-1;
+    transform: translateX(0.25rem);
   }
 
-  /* Tech tag */
-  .tech-tag {
-    @apply px-3 py-1.5 text-sm font-mono bg-secondary text-foreground rounded-sm 
-           transition-colors duration-200 hover:bg-primary hover:text-primary-foreground;
+  .project-arrow {
+    transition: transform 200ms ease, opacity 200ms ease;
+    opacity: 0.65;
   }
 
-  /* Resume button */
-  .btn-resume {
-    @apply px-5 py-2 bg-primary text-primary-foreground rounded-full text-sm font-medium
-           transition-all duration-200 hover:opacity-90 hover:scale-[1.02];
+  .text-balance {
+    text-wrap: balance;
   }
 
-  /* Nav link */
-  .nav-link {
-    @apply text-muted-foreground hover:text-foreground transition-colors duration-200;
+  .resume-pill {
+    @apply inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium;
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.92);
   }
 
-  /* Current role card */
+  .resume-pill:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
   .role-card {
-    @apply inline-flex items-center gap-2 px-4 py-2 bg-secondary/60 rounded-lg text-sm;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.9rem 1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.8);
   }
 
-  /* Available indicator pulse */
-  .pulse-dot {
-    @apply w-2 h-2 bg-green-500 rounded-full;
-    animation: pulse-ring 2s ease-out infinite;
+  .tech-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(29, 29, 31, 0.08);
+    color: rgba(29, 29, 31, 0.8);
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    transition: background 150ms ease, border-color 150ms ease;
   }
 
-  @keyframes pulse-ring {
-    0% {
-      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
-    }
-    70% {
-      box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-    }
-  }
-
-  /* Text scramble cursor */
-  .scramble-cursor {
-    @apply inline-block w-0.5 h-[1em] bg-foreground ml-0.5;
-    animation: blink 1s step-end infinite;
-  }
-
-  @keyframes blink {
-    50% { opacity: 0; }
+  .tech-tag:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(29, 29, 31, 0.12);
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .focus-ring {
+    outline: 2px solid var(--sk-focus-color);
+    outline-offset: 2px;
   }
 }

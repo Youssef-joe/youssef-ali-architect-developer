@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['SF Pro Text', 'SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['SF Pro Display', 'SF Pro Text', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
@@ -41,7 +42,7 @@ export default {
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          foreground: "#ffffff",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

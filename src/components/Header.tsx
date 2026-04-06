@@ -17,12 +17,12 @@ const Header = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm"
+      className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-3xl border-b border-white/10"
     >
-      <nav className="container-narrow py-4 flex items-center justify-between">
+      <nav className="container-narrow h-12 flex items-center justify-between">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-semibold text-foreground hover:opacity-70 transition-opacity"
+          className="text-sm uppercase tracking-[0.35em] text-white"
         >
           YA
         </button>
@@ -31,27 +31,27 @@ const Header = () => {
           <LanguageSwitch />
           <button
             onClick={() => scrollToSection('about')}
-            className="nav-link text-sm hidden sm:block"
+            className="text-white/70 hover:text-white transition-colors duration-200 text-[0.75rem] tracking-[0.3em] uppercase hidden sm:inline-flex"
           >
             {t('nav.about')}
           </button>
           <button
             onClick={() => scrollToSection('projects')}
-            className="nav-link text-sm hidden sm:block"
+            className="text-white/70 hover:text-white transition-colors duration-200 text-[0.75rem] tracking-[0.3em] uppercase hidden sm:inline-flex"
           >
             {t('nav.projects')}
           </button>
           <button
             onClick={() => scrollToSection('blog')}
-            className="nav-link text-sm hidden sm:block"
+            className="text-white/70 hover:text-white transition-colors duration-200 text-[0.75rem] tracking-[0.3em] uppercase hidden sm:inline-flex"
           >
             {t('nav.blog')}
           </button>
           <a
-            href="#resume"
-            className="btn-resume"
+            href="mailto:hello@youssefali.dev"
+            className="resume-pill hidden sm:inline-flex"
           >
-            {t('nav.resume')}
+            Contact
           </a>
         </div>
       </nav>

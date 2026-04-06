@@ -43,17 +43,20 @@ const Blog = () => {
   };
 
   return (
-    <section id="blog" className="py-32">
+    <section id="blog" className="py-32 section-dark">
       <div className="container-narrow">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="heading-lg mb-12"
+          className="mb-12 max-w-3xl"
         >
-          {t('blog.title')}
-        </motion.h2>
+          <h2 className="section-heading mb-4 text-white">{t('blog.title')}</h2>
+          <p className="body-text max-w-2xl">
+            {t('blog.subtitle') || 'A brief journal of design, engineering, and product thinking.'}
+          </p>
+        </motion.div>
 
         <div className="space-y-6">
           {posts.map((post, index) => (
@@ -63,25 +66,23 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true, margin: '-50px' }}
-              className="group"
+              className="apple-card-dark group"
             >
               <button
                 onClick={() => navigate(`/blog/${post.id}`)}
-                className="w-full text-left block py-6 border-b border-border hover:border-foreground transition-colors duration-300"
+                className="w-full text-left block p-8"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2 text-sm text-muted-foreground font-mono">
-                      <span>{formatDate(post.date)}</span>
-                      <span>•</span>
-                      <span>{post.readTime}</span>
+                <div className="flex items-start justify-between gap-6">
+                  <div className="flex-1 space-y-5">
+                    <div className="text-sm uppercase tracking-[0.35em] text-slate-400 font-mono">
+                      {formatDate(post.date)} · {post.readTime}
                     </div>
-                    <h3 className="heading-md mb-2 flex items-center gap-2 group-hover:text-muted-foreground transition-colors duration-300">
+                    <h3 className="card-title flex items-center gap-3 text-white">
                       {post.title}
-                      <Arrow className="project-arrow w-5 h-5" />
                     </h3>
                     <p className="body-text">{post.excerpt}</p>
                   </div>
+                  <Arrow className="w-5 h-5 text-[#2997ff]" />
                 </div>
               </button>
             </motion.article>

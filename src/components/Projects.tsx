@@ -16,7 +16,7 @@ const Projects = () => {
       title: t('projects.ayno.title'),
       description: t('projects.ayno.desc'),
       tech: ['Elixir', 'Go', 'C++'],
-      link: 'https://ayno.obl.ee',
+      link: 'https://ayno-ui.vercel.app',
     },
     {
       title: t('projects.fantasy.title'),
@@ -29,19 +29,22 @@ const Projects = () => {
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
 
   return (
-    <section id="projects" className="py-32">
+    <section id="projects" className="py-32 section-light">
       <div className="container-narrow">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="heading-lg mb-12"
+          className="mb-12 max-w-3xl"
         >
-          {t('projects.title')}
-        </motion.h2>
+          <h2 className="section-heading mb-4">{t('projects.title')}</h2>
+          <p className="body-text">
+            {t('projects.subtitle') || 'Selected work framed as product moments — clean, precise, and centered on impact.'}
+          </p>
+        </motion.div>
 
-        <div className="space-y-8">
+        <div className="feature-grid">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
@@ -49,28 +52,38 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true, margin: '-50px' }}
-              className="project-card group"
+              className="apple-card group"
             >
               <a
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block py-6 border-b border-border hover:border-foreground transition-colors duration-300"
+                className="block h-full"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="heading-md mb-2 flex items-center gap-2 group-hover:text-muted-foreground transition-colors duration-300">
+                <div className="flex h-full flex-col justify-between gap-8 p-8">
+                  <div className="space-y-5">
+                    <p className="text-sm uppercase tracking-[0.35em] text-slate-500">
+                      Project
+                    </p>
+                    <h3 className="card-title text-slate-950 flex items-center gap-3">
                       {project.title}
                       <Arrow className="project-arrow w-5 h-5" />
                     </h3>
-                    <p className="body-text mb-4">{project.description}</p>
+                    <p className="body-text text-slate-700">{project.description}</p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-3 items-center">
                     <div className="flex flex-wrap gap-2">
-                      {project.tech.map((t) => (
-                        <span key={t} className="font-mono text-xs text-muted-foreground">
-                          {t}
+                      {project.tech.map((tech) => (
+                        <span key={tech} className="tech-tag">
+                          {tech}
                         </span>
                       ))}
                     </div>
+                    <span className="apple-pill-link">
+                      Learn more
+                      <Arrow className="w-4 h-4" />
+                    </span>
                   </div>
                 </div>
               </a>

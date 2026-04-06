@@ -6,7 +6,7 @@ const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <footer className="py-20">
+    <footer className="py-24 section-light">
       <div className="container-narrow">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -15,7 +15,7 @@ const Footer = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="heading-md mb-8 text-balance">
+          <p className="section-heading mb-8 text-slate-950 text-balance">
             {t('footer.cta')}
           </p>
 
@@ -24,7 +24,7 @@ const Footer = () => {
               href="https://github.com/Youssef-joe"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="text-slate-500 hover:text-slate-900 transition-colors duration-200"
               aria-label="GitHub"
             >
               <Github className="w-5 h-5" />
@@ -33,21 +33,21 @@ const Footer = () => {
               href="https://www.linkedin.com/in/youssef-ali-7792b21b3/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="text-slate-500 hover:text-slate-900 transition-colors duration-200"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a
               href="mailto:hello@youssefali.dev"
-              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="text-slate-500 hover:text-slate-900 transition-colors duration-200"
               aria-label="Email"
             >
               <Mail className="w-5 h-5" />
             </a>
           </div>
 
-          <p className="mt-12 text-sm text-muted-foreground">
+          <p className="mt-12 text-sm text-slate-500">
             © {new Date().getFullYear()} {t('hero.name')}. {t('footer.copyright')}
           </p>
         </motion.div>

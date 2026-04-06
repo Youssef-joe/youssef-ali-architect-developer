@@ -18,14 +18,14 @@ const Toolkit = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-32 bg-secondary/30">
+    <section className="py-32 section-light">
       <div className="container-narrow">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="heading-lg mb-12"
+          className="section-heading mb-12"
         >
           {t('toolkit.title')}
         </motion.h2>
@@ -35,7 +35,7 @@ const Toolkit = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true, margin: '-50px' }}
-          className="flex flex-wrap gap-3"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"
         >
           {technologies.map((tech, index) => (
             <motion.span
