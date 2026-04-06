@@ -9,6 +9,13 @@ const Blog = () => {
 
   const posts = [
     {
+      id: '4',
+      title: 'How Many Abstractions Do You Actually Need?',
+      excerpt: 'A simple "Hello, World" revealed something uncomfortable about the tools I use every day and whether I truly understand what I\'m asking them to do.',
+      date: '2024-01-22',
+      readTime: '12 min read',
+    },
+    {
       id: '1',
       title: t('blog.post1.title'),
       excerpt: t('blog.post1.excerpt'),
