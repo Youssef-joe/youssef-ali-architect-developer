@@ -17,7 +17,7 @@ export interface BlogPost {
 export const initialBlogPosts: BlogPost[] = [
   {
     id: 1,
-    year: "2024",
+    year: "2026",
     image: "/images/hero-art.jpg",
     zh: {
       title: "静默的石头",
@@ -36,7 +36,7 @@ export const initialBlogPosts: BlogPost[] = [
   },
   {
     id: 2,
-    year: "2024",
+    year: "2026",
     image: "/images/blog-1.jpg",
     zh: {
       title: "流水的形状",
@@ -55,7 +55,7 @@ export const initialBlogPosts: BlogPost[] = [
   },
   {
     id: 3,
-    year: "2023",
+    year: "2026",
     image: "/images/blog-2.jpg",
     zh: {
       title: "花园里的众神",
@@ -74,7 +74,7 @@ export const initialBlogPosts: BlogPost[] = [
   },
   {
     id: 4,
-    year: "2023",
+    year: "2026",
     image: "/images/blog-4.jpg",
     zh: {
       title: "城市的墨痕",
@@ -93,7 +93,7 @@ export const initialBlogPosts: BlogPost[] = [
   },
   {
     id: 5,
-    year: "2024",
+    year: "2026",
     image: "/images/blog-5.jpg",
     zh: {
       title: "土与火",
@@ -112,7 +112,7 @@ export const initialBlogPosts: BlogPost[] = [
   },
   {
     id: 6,
-    year: "2023",
+    year: "2026",
     image: "/images/blog-6.jpg",
     zh: {
       title: "让花朵说话",
