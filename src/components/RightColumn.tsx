@@ -54,11 +54,8 @@ export default function RightColumn() {
 
   useEffect(() => {
     if (!artFrameRef.current || !imageRef.current) return;
-    const tween = gsap.to(imageRef.current, {
-      y: -40, ease: 'none',
-      scrollTrigger: { trigger: artFrameRef.current, start: 'top bottom', end: 'bottom top', scrub: true },
-    });
-    return () => { if (tween.scrollTrigger) tween.scrollTrigger.kill(); tween.kill(); };
+    const tween = gsap.fromTo(imageRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' });
+    return () => { tween.kill(); };
   }, []);
 
   const items = cvData[language];
@@ -73,7 +70,7 @@ export default function RightColumn() {
   const updatedText = language === 'ar' ? 'آخر تحديث 2025.06' : 'Last Updated 2025.06';
 
   return (
-    <aside className="sticky top-0 h-screen overflow-y-auto" style={{ width: '25%', minWidth: '280px' }}>
+    <aside className="sticky top-0 h-screen overflow-y-auto" style={{ width: '100%', minWidth: '0', position: 'relative' }}>
       <div className="p-6 pb-24">
           <h2 style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-grey)', marginBottom: '48px', lineHeight: 1.4 }}>
           {headerText}

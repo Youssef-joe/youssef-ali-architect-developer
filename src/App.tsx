@@ -39,20 +39,71 @@ function ToggleBar() {
 
 function HomePage() {
   const [showContact, setShowContact] = useState(false);
+  const [mobileLeftOpen, setMobileLeftOpen] = useState(false);
+  const [mobileRightOpen, setMobileRightOpen] = useState(false);
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'var(--bg-warm-white)' }}>
-      <header className="fixed top-0 left-0 right-0 flex items-center justify-between px-6" style={{ height: '40px', zIndex: 50, backgroundColor: 'transparent' }}>
-        <span style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-charcoal)' }}>
-          YOUSSEF ALI (ENGINEER)
-        </span>
+      <header className="fixed top-0 left-0 right-0 flex items-center justify-between px-4 md:px-6" style={{ height: '40px', zIndex: 50, backgroundColor: 'transparent' }}>
+        <div className="flex items-center gap-3">
+          <button
+            className="md:hidden"
+            onClick={() => setMobileLeftOpen(!mobileLeftOpen)}
+            style={{ fontSize: '12px', color: 'var(--text-charcoal)', background: 'none', border: 'none', cursor: 'pointer', letterSpacing: '0.05em', textTransform: 'uppercase' }}
+          >
+            {mobileLeftOpen ? '✕' : '☰'}
+          </button>
+          <span style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-charcoal)' }}>
+            YOUSSEF ALI (ENGINEER)
+          </span>
+        </div>
         <ToggleBar />
       </header>
 
-      <div className="flex" style={{ paddingTop: '40px', height: '100vh' }}>
-        <LeftColumn onContactClick={() => setShowContact(true)} />
-        <MiddleColumn posts={initialBlogPosts} />
-        <RightColumn />
+      <div className="flex flex-col md:flex-row" style={{ paddingTop: '40px', height: 'auto', minHeight: '100vh' }}>
+        {mobileLeftOpen && (
+          <div className="fixed inset-0 z-40 md:hidden">
+            <div className="absolute inset-0 bg-black/50" onClick={() => setMobileLeftOpen(false)} />
+            <div className="relative h-full">
+              <LeftColumn onContactClick={() => { setShowContact(true); setMobileLeftOpen(false); }} />
+            </div>
+          </div>
+        )}
+
+        <aside className="hidden md:block" style={{ width: '21%', minWidth: '160px' }}>
+          <div className="sticky top-0 h-screen overflow-y-auto" style={{ borderRight: '1px solid var(--border-light)', position: 'relative' }}>
+            <LeftColumn onContactClick={() => setShowContact(true)} />
+          </div>
+        </aside>
+
+        <main className="flex-1 overflow-y-auto w-full" style={{ borderRight: 'none', borderBottom: '1px solid var(--border-light)', height: 'auto', minHeight: '100vh', scrollBehavior: 'smooth' }}>
+          <div className="p-4 md:p-6 pb-24">
+            <MiddleColumn posts={initialBlogPosts} />
+          </div>
+        </main>
+
+        <aside className="hidden md:block" style={{ width: '25%', minWidth: '200px' }}>
+          <div className="sticky top-0 h-screen overflow-y-auto" style={{ position: 'relative' }}>
+            <RightColumn />
+          </div>
+        </aside>
+
+        {mobileRightOpen && (
+          <div className="fixed inset-0 z-40 md:hidden">
+            <div className="absolute inset-0 bg-black/50" onClick={() => setMobileRightOpen(false)} />
+            <div className="relative h-full">
+              <RightColumn />
+            </div>
+          </div>
+        )}
+
+        <button
+          className="fixed bottom-4 right-4 md:hidden z-30"
+          onClick={() => setMobileRightOpen(!mobileRightOpen)}
+          style={{ fontSize: '12px', color: 'var(--text-charcoal)', background: 'var(--bg-warm-white)', border: '1px solid var(--border-light)', borderRadius: '8px', cursor: 'pointer', padding: '8px 12px', boxShadow: '0px 4px 15px rgba(0,0,0,0.08)', letterSpacing: '0.05em' }}
+        >
+          {mobileRightOpen ? '✕' : 'CV'}
+        </button>
       </div>
 
       <ContactModal isOpen={showContact} onClose={() => setShowContact(false)} />

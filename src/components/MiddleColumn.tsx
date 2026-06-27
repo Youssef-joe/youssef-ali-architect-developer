@@ -33,7 +33,7 @@ export default function MiddleColumn({ posts }: MiddleColumnProps) {
   }, [posts]);
 
   return (
-    <main ref={columnRef} className="flex-1 overflow-y-auto" style={{ borderRight: '1px solid var(--border-light)', height: '100vh', scrollBehavior: 'smooth' }}>
+    <main ref={columnRef} className="flex-1 overflow-y-auto w-full" style={{ height: 'auto', minHeight: '100vh', scrollBehavior: 'smooth' }}>
       <div className="p-6 pb-24">
         <h2 style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-grey)', marginBottom: '32px', lineHeight: 1.4 }}>
           MATERIAL (THOUGHTS)

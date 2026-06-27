@@ -20,7 +20,7 @@ export default function LeftColumn({ onContactClick }: LeftColumnProps) {
   return (
     <aside
       className="sticky top-0 h-screen flex flex-col"
-      style={{ width: '21%', minWidth: '240px', borderRight: '1px solid var(--border-light)', position: 'relative' }}
+      style={{ width: '100%', minWidth: '0', position: 'relative' }}
     >
       <ShaderCanvas />
 
