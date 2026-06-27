@@ -7,7 +7,7 @@ interface ThemeContextType {
   toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextType>({ theme: 'light', toggleTheme: () => {} });
+const ThemeContext = createContext<ThemeContextType>({ theme: 'dark', toggleTheme: () => {} });
 
 const STORAGE_KEY = 'neural-atelier-theme';
 
@@ -16,7 +16,7 @@ function getInitialTheme(): Theme {
     const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
     if (stored === 'light' || stored === 'dark') return stored;
   } catch { /* ignore */ }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return 'dark';
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
