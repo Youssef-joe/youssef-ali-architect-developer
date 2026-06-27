@@ -22,13 +22,13 @@ export default function PostDetail({ posts }: PostDetailProps) {
     }
   }, [id]);
 
-  const backText = language === 'zh' ? '返回首页' : 'Back to home';
+  const backText = language === 'ar' ? 'العودة للرئيسية' : 'Back to home';
 
   if (!post) {
     return (
       <div className="flex items-center justify-center" style={{ height: '100vh', backgroundColor: 'var(--bg-warm-white)' }}>
         <div className="text-center">
-          <p style={{ fontSize: '14px', color: 'var(--text-grey)' }}>{language === 'zh' ? '文章不存在' : 'Article not found'}</p>
+          <p style={{ fontSize: '14px', color: 'var(--text-grey)' }}>{language === 'ar' ? 'المقال غير موجود' : 'Article not found'}</p>
           <button onClick={() => navigate('/')} style={{ marginTop: '16px', fontSize: '12px', color: 'var(--text-charcoal)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
             {backText}
           </button>
@@ -37,7 +37,7 @@ export default function PostDetail({ posts }: PostDetailProps) {
     );
   }
 
-  const content = post[language];
+  const content = post[language] || post['en'];
   const paragraphs = content.detailContent.split('\n\n');
 
   return (
@@ -47,7 +47,7 @@ export default function PostDetail({ posts }: PostDetailProps) {
           NEURAL ATELIER (BLOG)
         </button>
         <button onClick={() => navigate('/')} style={{ fontSize: '12px', fontFamily: "'Space Mono', monospace", color: 'var(--text-charcoal)', background: 'none', border: 'none', cursor: 'pointer' }}>
-          {language === 'zh' ? '关闭' : 'Close'}
+          {language === 'ar' ? 'إغلاق' : 'Close'}
         </button>
       </header>
 
@@ -75,7 +75,7 @@ export default function PostDetail({ posts }: PostDetailProps) {
 
         <div style={{ borderTop: '1px solid var(--border-light)', marginTop: '48px', paddingTop: '24px' }}>
           <button onClick={() => navigate('/')} style={{ fontSize: '12px', color: 'var(--text-charcoal)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-            {language === 'zh' ? '返回全部文章' : 'Back to all articles'}
+            {language === 'ar' ? 'العودة لجميع المقالات' : 'Back to all articles'}
           </button>
         </div>
       </div>

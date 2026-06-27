@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const t = {
-  zh: { title: '留言', nameLabel: '你的名字（可选）', namePlaceholder: '匿名', messageLabel: '留言内容', messagePlaceholder: '写下你想说的话...', cancel: '取消', send: '发送邮件' },
+  ar: { title: 'تواصل', nameLabel: 'اسمك (اختياري)', namePlaceholder: 'مجهول', messageLabel: 'رسالتك', messagePlaceholder: 'اكتب ما تريد قوله...', cancel: 'إلغاء', send: 'إرسال بريد' },
   en: { title: 'Contact', nameLabel: 'Your name (optional)', namePlaceholder: 'Anonymous', messageLabel: 'Your message', messagePlaceholder: 'Write what you want to say...', cancel: 'Cancel', send: 'Send Email' },
 };
 

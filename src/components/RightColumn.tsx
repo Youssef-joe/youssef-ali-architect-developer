@@ -8,21 +8,21 @@ gsap.registerPlugin(ScrollTrigger);
 interface CVItem { category: string; title: string; subtitle?: string; year: string; }
 
 const cvData: Record<string, CVItem[]> = {
-  zh: [
-    { category: 'Education', title: 'New Cairo Academy', subtitle: '计算机科学学士', year: '2023 - Present' },
-    { category: 'Education', title: 'AMIT Learning', subtitle: 'Node.js 文凭 (98/100)', year: '2023' },
-    { category: 'Experience', title: 'EnovaWorx', subtitle: '全栈工程师 / SaaS平台 / 美国', year: '2026 - Present' },
-    { category: 'Experience', title: 'Infotech Global', subtitle: '后端工程师 / 求职平台 / 开罗', year: '2025 - 2026' },
-    { category: 'Experience', title: 'XFede', subtitle: '全栈工程师 / 房产平台 / 开罗', year: '2025' },
-    { category: 'Projects', title: "Joe's OS", subtitle: '从零构建的x86/RISC-V操作系统', year: '2024 - 2025' },
-    { category: 'Projects', title: 'Ayno', subtitle: '多租户实时消息引擎 (Elixir/Go/C++)', year: '2024 - 2025' },
-    { category: 'Projects', title: 'Novel-Nest', subtitle: 'AI图书平台 (Next.js/Express/Golang/WebRTC)', year: '2024' },
-    { category: 'Projects', title: 'DB-Studio', subtitle: '通用数据库管理工具 (React/Hono/TypeScript)', year: '2024' },
-    { category: 'Open Source', title: 'Gitea', subtitle: '自托管Git服务 / 贡献者', year: '2024 - 2025' },
-    { category: 'Open Source', title: 'Meshery', subtitle: '云原生基础设施管理 / 贡献者', year: '2024 - 2025' },
-    { category: 'Community', title: 'GDG', subtitle: 'Google开发者社区领导者 / 两年', year: '2023 - 2025' },
-    { category: 'Tech Stack', title: 'Languages', subtitle: 'TypeScript, Go, Elixir, Python, C++, C#, C, Assembly', year: '' },
-    { category: 'Tech Stack', title: 'Technologies', subtitle: 'Node.js, .NET, React, Remix, Docker, GitHub Actions, FastAPI, Drizzle, Prisma, PostgreSQL, MongoDB', year: '' },
+  ar: [
+    { category: 'التعليم', title: 'أكاديمية القاهرة الجديدة', subtitle: 'بكالوريوس علوم الحاسب', year: '2023 - الحاضر' },
+    { category: 'التعليم', title: 'معهد أميت للتعلم', subtitle: 'دبلوم Node.js (98/100)', year: '2023' },
+    { category: 'الخبرات', title: 'إنوفاوركس', subtitle: 'مهندس Full-Stack / SaaS / ماريلاند، الولايات المتحدة', year: '2026 - الحاضر' },
+    { category: 'الخبرات', title: 'إنفوتيك جlobal', subtitle: 'مهندس Backend / منصة توظيف / القاهرة', year: '2025 - 2026' },
+    { category: 'الخبرات', title: 'إكسفيدي', subtitle: 'مهندس Full-Stack / عقارات / القاهرة', year: '2025' },
+    { category: 'المشاريع', title: "Joe's OS", subtitle: 'نظام تشغيل مخصص x86 و RISC-V', year: '2024 - 2025' },
+    { category: 'المشاريع', title: 'أينو', subtitle: 'محرك مراسلة فورية متعدد المستأجرين (Elixir/Go/C++)', year: '2024 - 2025' },
+    { category: 'المشاريع', title: 'نوفل-نيست', subtitle: 'منصة كتب مدعومة بالذكاء الاصطناعي (Next.js/Express/Golang/WebRTC)', year: '2024' },
+    { category: 'المشاريع', title: 'DB-ستوديو', subtitle: 'أداة إدارة قواعد بيانات عامة (React/Hono/TypeScript)', year: '2024' },
+    { category: 'المصدر المفتوح', title: 'جيتيا', subtitle: 'خدمة Git مكتفية ذاتياً / مساهم', year: '2024 - 2025' },
+    { category: 'المصدر المفتوح', title: 'مشيري', subtitle: 'إدارة بنية تحتية سحابية / مساهم', year: '2024 - 2025' },
+    { category: 'المجتمع', title: 'GDG', subtitle: 'قائد مجموعات مطوري جوجل / سنتان', year: '2023 - 2025' },
+    { category: 'التقنيات', title: 'اللغات', subtitle: 'TypeScript, Go, Elixir, Python, C++, C#, C, Assembly', year: '' },
+    { category: 'التقنيات', title: 'التقنيات', subtitle: 'Node.js, .NET, React, Remix, Docker, GitHub Actions, FastAPI, Drizzle, Prisma, PostgreSQL, MongoDB', year: '' },
   ],
   en: [
     { category: 'Education', title: 'New Cairo Academy', subtitle: 'BS in Computer Science', year: '2023 - Present' },
@@ -42,7 +42,10 @@ const cvData: Record<string, CVItem[]> = {
   ],
 };
 
-const sectionOrder = ['Education', 'Experience', 'Projects', 'Open Source', 'Community', 'Tech Stack'];
+const sectionOrder: Record<string, string[]> = {
+  ar: ['التعليم', 'الخبرات', 'المشاريع', 'المصدر المفتوح', 'المجتمع', 'التقنيات'],
+  en: ['Education', 'Experience', 'Projects', 'Open Source', 'Community', 'Tech Stack'],
+};
 
 export default function RightColumn() {
   const { language } = useLanguage();
@@ -64,12 +67,16 @@ export default function RightColumn() {
     acc[item.category].push(item);
     return acc;
   }, {});
+  const order = sectionOrder[language] || sectionOrder['en'];
+
+  const headerText = language === 'ar' ? 'السيرة الذاتية (أرشيف)' : 'CV (ARCHIVE)';
+  const updatedText = language === 'ar' ? 'آخر تحديث 2025.06' : 'Last Updated 2025.06';
 
   return (
     <aside className="sticky top-0 h-screen overflow-y-auto" style={{ width: '25%', minWidth: '280px' }}>
       <div className="p-6 pb-24">
-        <h2 style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-grey)', marginBottom: '48px', lineHeight: 1.4 }}>
-          CV (ARCHIVE)
+          <h2 style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-grey)', marginBottom: '48px', lineHeight: 1.4 }}>
+          {headerText}
         </h2>
 
         {/* Avatar */}
@@ -79,7 +86,7 @@ export default function RightColumn() {
           </div>
         </div>
 
-        {sectionOrder.map((category) => {
+        {order.map((category) => {
           const sectionItems = sections[category];
           if (!sectionItems?.length) return null;
           return (
@@ -101,7 +108,7 @@ export default function RightColumn() {
           );
         })}
 
-        <p style={{ fontSize: '11px', color: 'var(--text-grey)', marginTop: '32px' }}>Last Updated 2025.06</p>
+        <p style={{ fontSize: '11px', color: 'var(--text-grey)', marginTop: '32px' }}>{updatedText}</p>
       </div>
     </aside>
   );

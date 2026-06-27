@@ -25,7 +25,7 @@ function ToggleBar() {
         onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'var(--accent-teal)'; }}
         onMouseLeave={(e) => { (e.target as HTMLElement).style.color = 'var(--text-charcoal)'; }}
       >
-        {language === 'zh' ? '中 / EN' : 'ZH / en'}
+        {language === 'en' ? 'عربي' : 'EN'}
       </button>
       <button style={btnStyle} onClick={toggleTheme}
         onMouseEnter={(e) => { (e.target as HTMLElement).style.color = 'var(--accent-teal)'; }}

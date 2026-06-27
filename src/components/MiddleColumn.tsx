@@ -40,7 +40,7 @@ export default function MiddleColumn({ posts }: MiddleColumnProps) {
         </h2>
 
         {posts.map((post) => {
-          const content = post[language];
+          const content = post[language] || post['en'];
           return (
             <article
               key={post.id}
