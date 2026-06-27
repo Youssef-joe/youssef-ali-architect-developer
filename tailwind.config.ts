@@ -14,9 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['SF Pro Text', 'SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['SF Pro Display', 'SF Pro Text', 'Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ["'Space Mono'", 'monospace'],
+        mono: ["'Space Mono'", 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
