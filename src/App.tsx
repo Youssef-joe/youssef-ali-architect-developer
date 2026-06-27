@@ -92,7 +92,7 @@ function HomePage() {
           <div className="fixed inset-0 z-40 md:hidden">
             <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={() => setMobileRightOpen(false)} />
             <div className="relative h-full">
-              <RightColumn />
+              <RightColumn onClose={() => setMobileRightOpen(false)} />
             </div>
           </div>
         )}

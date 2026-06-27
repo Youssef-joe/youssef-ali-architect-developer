@@ -47,7 +47,14 @@ const sectionOrder: Record<string, string[]> = {
   en: ['Education', 'Experience', 'Projects', 'Open Source', 'Community', 'Tech Stack'],
 };
 
-export default function RightColumn() {
+const linkedinUrl = 'https://linkedin.com/in/youssef-ali-7792b21b3';
+const githubUrl = 'https://github.com/youssef-joe';
+
+interface RightColumnProps {
+  onClose?: () => void;
+}
+
+export default function RightColumn({ onClose }: RightColumnProps) {
   const { language } = useLanguage();
   const artFrameRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -69,12 +76,28 @@ export default function RightColumn() {
   const headerText = language === 'ar' ? 'السيرة الذاتية (أرشيف)' : 'CV (ARCHIVE)';
   const updatedText = language === 'ar' ? 'آخر تحديث 2025.06' : 'Last Updated 2025.06';
 
+  const socialLabel = language === 'ar' ? 'روابط التواصل' : 'CONTACT LINKS';
+  const linkedinLabel = language === 'ar' ? 'لينكدإن' : 'LinkedIn';
+  const githubLabel = language === 'ar' ? 'جيتهاب' : 'GitHub';
+
   return (
     <aside className="sticky top-0 h-screen overflow-y-auto" style={{ width: '100%', minWidth: '0', position: 'relative' }}>
       <div className="p-6 pb-24">
-          <h2 style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-grey)', marginBottom: '48px', lineHeight: 1.4 }}>
-          {headerText}
-        </h2>
+        <div className="flex items-center justify-between mb-2">
+          <h2 style={{ fontSize: '12px', fontWeight: 400, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-grey)', lineHeight: 1.4 }}>
+            {headerText}
+          </h2>
+          {onClose && (
+            <button
+              onClick={onClose}
+              style={{ fontSize: '18px', color: 'var(--text-charcoal)', background: 'rgba(255,255,255,0.1)', border: '1px solid var(--border-light)', borderRadius: '50%', cursor: 'pointer', width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'opacity 0.2s ease' }}
+              onMouseEnter={(e) => { (e.target as HTMLElement).style.opacity = '0.6'; }}
+              onMouseLeave={(e) => { (e.target as HTMLElement).style.opacity = '1'; }}
+            >
+              ✕
+            </button>
+          )}
+        </div>
 
         {/* Avatar */}
         <div className="mt-8 mb-10">
@@ -106,6 +129,18 @@ export default function RightColumn() {
         })}
 
         <p style={{ fontSize: '11px', color: 'var(--text-grey)', marginTop: '32px' }}>{updatedText}</p>
+
+        <div style={{ marginTop: '24px', borderTop: '1px solid var(--border-light)', paddingTop: '16px' }}>
+          <p style={{ fontSize: '11px', color: 'var(--text-grey)', marginBottom: '12px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{socialLabel}</p>
+          <div className="space-y-2">
+            <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: '12px', color: 'var(--text-charcoal)', textDecoration: 'underline', textUnderlineOffset: '3px', display: 'block', lineHeight: 1.6 }}>
+              {linkedinLabel}
+            </a>
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" style={{ fontSize: '12px', color: 'var(--text-charcoal)', textDecoration: 'underline', textUnderlineOffset: '3px', display: 'block', lineHeight: 1.6 }}>
+              {githubLabel}
+            </a>
+          </div>
+        </div>
       </div>
     </aside>
   );
