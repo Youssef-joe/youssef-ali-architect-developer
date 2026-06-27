@@ -63,7 +63,7 @@ function HomePage() {
       <div className="flex flex-col md:flex-row" style={{ paddingTop: '40px', height: 'auto', minHeight: '100vh' }}>
         {mobileLeftOpen && (
           <div className="fixed inset-0 z-40 md:hidden">
-            <div className="absolute inset-0 bg-black/50" onClick={() => setMobileLeftOpen(false)} />
+            <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={() => setMobileLeftOpen(false)} />
             <div className="relative h-full">
               <LeftColumn onContactClick={() => { setShowContact(true); setMobileLeftOpen(false); }} />
             </div>
@@ -90,7 +90,7 @@ function HomePage() {
 
         {mobileRightOpen && (
           <div className="fixed inset-0 z-40 md:hidden">
-            <div className="absolute inset-0 bg-black/50" onClick={() => setMobileRightOpen(false)} />
+            <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={() => setMobileRightOpen(false)} />
             <div className="relative h-full">
               <RightColumn />
             </div>
