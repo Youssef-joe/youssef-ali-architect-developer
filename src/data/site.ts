@@ -48,7 +48,7 @@ export const about: Localized<{ lead: string; body: string[] }> = {
     body: [
       "I'm a systems engineer based in Cairo. At EnovaWorx I build SaaS infrastructure — AI integration, full-stack platform work, and the plumbing that keeps it all responsive. Before that I worked on backend systems for a job board at Infotech Global and a real-estate platform at XFede.",
       "Outside of client work I stay close to the metal. Ayno is a multi-tenant real-time messaging engine I wrote in Elixir, Go, and C++. Joe's OS is an operating system built from nothing, targeting both x86 and RISC-V. Neither started as a product; both started as an argument with myself about how something actually works.",
-      'I contribute to Gitea and Meshery, and I led a Google Developer Group chapter for two years. I think elegant architecture is mostly a byproduct of refusing to treat any layer as a black box.',
+      'These days most of my open source time goes to the PostgreSQL tooling ecosystem — pgagroal, pgmoneta, pgexporter, and pgvictoria — which is C, close to the database, and exactly the kind of work I like. Before that, Gitea and Meshery. I also led a Google Developer Group chapter for two years. I think elegant architecture is mostly a byproduct of refusing to treat any layer as a black box.',
     ],
   },
   ar: {
@@ -56,7 +56,7 @@ export const about: Localized<{ lead: string; body: string[] }> = {
     body: [
       'مهندس أنظمة مقيم في القاهرة. أعمل في إنوفاوركس على بناء بنية تحتية لمنصات SaaS — تكامل الذكاء الاصطناعي، وتطوير المنصات Full-Stack، والأساس الذي يبقيها سريعة الاستجابة. قبل ذلك عملت على أنظمة Backend لمنصة توظيف في إنفوتيك جلوبال، ومنصة عقارية في إكسفيدي.',
       'وخارج العمل، أبقى قريباً من المستوى المنخفض. أينو محرك مراسلة فورية متعدد المستأجرين كتبته بلغات Elixir و Go و C++. و Joe\'s OS نظام تشغيل بنيته من الصفر ليعمل على معماريتَي x86 و RISC-V. لم يبدأ أيٌّ منهما كمنتج، بل كمحاولة لفهم كيف تعمل الأشياء فعلاً.',
-      'أساهم في مشروعَي Gitea و Meshery، وقدت فرع مجموعات مطوري جوجل لمدة عامين. أؤمن أن الهندسة الأنيقة نتيجة طبيعية لرفض التعامل مع أي طبقة كصندوق مغلق.',
+      'معظم وقتي في المصدر المفتوح يذهب حالياً إلى منظومة أدوات PostgreSQL — pgagroal و pgmoneta و pgexporter و pgvictoria — وهي مكتوبة بلغة C وقريبة من قلب قاعدة البيانات، وهذا بالضبط نوع العمل الذي أحبه. وقبلها ساهمت في Gitea و Meshery. كما قدت فرع مجموعات مطوري جوجل لمدة عامين. أؤمن أن الهندسة الأنيقة نتيجة طبيعية لرفض التعامل مع أي طبقة كصندوق مغلق.',
     ],
   },
 };
@@ -163,6 +163,7 @@ export const cvData: Record<Language, CVItem[]> = {
     { category: 'الخبرات', title: 'إكسفيدي', subtitle: 'مهندس Full-Stack / عقارات / القاهرة', year: '2025' },
     { category: 'التعليم', title: 'أكاديمية القاهرة الجديدة', subtitle: 'بكالوريوس علوم الحاسب', year: '2023 - الحاضر' },
     { category: 'التعليم', title: 'معهد أميت للتعلم', subtitle: 'دبلوم Node.js (98/100)', year: '2023' },
+    { category: 'المصدر المفتوح', title: 'منظومة PostgreSQL', subtitle: 'pgagroal، pgmoneta، pgexporter، pgvictoria / مساهم', year: '2026 - الحاضر' },
     { category: 'المصدر المفتوح', title: 'جيتيا', subtitle: 'خدمة Git مكتفية ذاتياً / مساهم', year: '2024 - 2025' },
     { category: 'المصدر المفتوح', title: 'مشيري', subtitle: 'إدارة بنية تحتية سحابية / مساهم', year: '2024 - 2025' },
     { category: 'المجتمع', title: 'GDG', subtitle: 'قائد مجموعات مطوري جوجل / سنتان', year: '2023 - 2025' },
@@ -175,6 +176,7 @@ export const cvData: Record<Language, CVItem[]> = {
     { category: 'Experience', title: 'XFede', subtitle: 'Full-Stack Engineer / Real Estate / Cairo', year: '2025' },
     { category: 'Education', title: 'New Cairo Academy', subtitle: 'BS in Computer Science', year: '2023 - Present' },
     { category: 'Education', title: 'AMIT Learning', subtitle: 'Node.js Diploma (98/100)', year: '2023' },
+    { category: 'Open Source', title: 'PostgreSQL Ecosystem', subtitle: 'pgagroal, pgmoneta, pgexporter, pgvictoria / Contributor', year: '2026 - Present' },
     { category: 'Open Source', title: 'Gitea', subtitle: 'Self-hosted Git service / Contributor', year: '2024 - 2025' },
     { category: 'Open Source', title: 'Meshery', subtitle: 'Cloud-native infra management / Contributor', year: '2024 - 2025' },
     { category: 'Community', title: 'GDG', subtitle: 'Google Developer Groups Leader / Two Years', year: '2023 - 2025' },
