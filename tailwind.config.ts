@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["'Space Mono'", 'monospace'],
-        mono: ["'Space Mono'", 'monospace'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        mono: ["'Space Mono'", 'ui-monospace', 'monospace'],
+        arabic: ["'IBM Plex Sans Arabic'", 'Inter', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
