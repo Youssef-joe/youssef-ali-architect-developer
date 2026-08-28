@@ -7,6 +7,7 @@ import WorkSection from './components/WorkSection';
 import WritingSection from './components/WritingSection';
 import CVSection from './components/CVSection';
 import ContactSection from './components/ContactSection';
+import GallerySection from './components/GallerySection';
 import { useChoreography } from './components/useChoreography';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
@@ -49,6 +50,7 @@ function HomePage() {
         <HeroSection />
         <AboutSection />
         <WorkSection />
+        <GallerySection />
         <WritingSection />
         <CVSection />
         <ContactSection />

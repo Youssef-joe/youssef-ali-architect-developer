@@ -254,3 +254,43 @@ export const ui: Localized<Record<string, string>> = {
     backToTop: 'العودة إلى الأعلى',
   },
 };
+
+/* ------------------------------------------------------------------ */
+/* Eras (Gallery)                                                      */
+/* ------------------------------------------------------------------ */
+
+export interface EraItem {
+  id: string;
+  image: string;
+  title: string;
+  subtitle: string;
+  en: { description: string };
+  ar: { description: string };
+}
+
+export const eras: EraItem[] = [
+  {
+    id: 'early-years',
+    image: '/classical_portrait.jpg',
+    title: 'RENAISSANCE',
+    subtitle: 'Exhibition 001',
+    en: { description: 'The early years defined by curiosity and a relentless drive to uncover how things are built from the ground up.' },
+    ar: { description: 'السنوات الأولى التي تميزت بالفضول والدافع المستمر لاكتشاف كيف تُبنى الأشياء من الصفر.' }
+  },
+  {
+    id: 'the-builder',
+    image: '/era_2_victorian.jpg',
+    title: 'INDUSTRIAL',
+    subtitle: 'Exhibition 002',
+    en: { description: 'A period of forging systems and assembling complex architectures. The focus shifts to real-time engines and scalable foundations.' },
+    ar: { description: 'فترة بناء الأنظمة وتجميع البنى المعمارية المعقدة. التركيز ينتقل إلى محركات الوقت الفعلي والأسس القابلة للتوسع.' }
+  },
+  {
+    id: 'the-architect',
+    image: '/era_3_rococo.jpg',
+    title: 'ROCOCO',
+    subtitle: 'Exhibition 003',
+    en: { description: 'Mastering the craft. Balancing aesthetic elegance with low-level performance to create holistic digital experiences.' },
+    ar: { description: 'إتقان الحرفة. الموازنة بين الأناقة الجمالية والأداء منخفض المستوى لإنشاء تجارب رقمية متكاملة.' }
+  }
+];
