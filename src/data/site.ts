@@ -198,6 +198,7 @@ export const ui: Localized<Record<string, string>> = {
   en: {
     navAbout: 'About',
     navWork: 'Work',
+    navStory: 'Story',
     navWriting: 'Writing',
     navCV: 'CV',
     navContact: 'Contact',
@@ -227,6 +228,7 @@ export const ui: Localized<Record<string, string>> = {
   ar: {
     navAbout: 'نبذة',
     navWork: 'الأعمال',
+    navStory: 'القصة',
     navWriting: 'مقالات',
     navCV: 'السيرة',
     navContact: 'تواصل',

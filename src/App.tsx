@@ -8,7 +8,6 @@ import WritingSection from './components/WritingSection';
 import CVSection from './components/CVSection';
 import ContactSection from './components/ContactSection';
 import GallerySection from './components/GallerySection';
-import StorySection from './components/StorySection';
 import { useChoreography } from './components/useChoreography';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
@@ -19,6 +18,7 @@ import NotFound from './pages/NotFound';
    when someone actually opens an article, not on first paint of the home page. */
 const ArticleIndex = lazy(() => import('./pages/ArticleIndex'));
 const ArticleReader = lazy(() => import('./pages/ArticleReader'));
+const StoryPage = lazy(() => import('./pages/StoryPage'));
 
 function HomePage() {
   useChoreography();
@@ -52,7 +52,6 @@ function HomePage() {
         <AboutSection />
         <WorkSection />
         <GallerySection />
-        <StorySection />
         <WritingSection />
         <CVSection />
         <ContactSection />
@@ -71,6 +70,7 @@ function AnimatedRoutes() {
       <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
         <Routes location={location}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/story" element={<StoryPage />} />
           <Route path="/writing" element={<ArticleIndex />} />
           <Route path="/writing/:slug" element={<ArticleReader />} />
           <Route path="*" element={<NotFound />} />

@@ -4,13 +4,20 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import { ui } from '../data/site';
 
-const sections = [
+type NavItem = {
+  id: string;
+  key: string;
+  isPage?: boolean;
+};
+
+const navItems: NavItem[] = [
   { id: 'about', key: 'navAbout' },
   { id: 'work', key: 'navWork' },
-  { id: 'writing', key: 'navWriting' },
+  { id: 'story', key: 'navStory', isPage: true },
+  { id: 'writing', key: 'navWriting', isPage: true },
   { id: 'cv', key: 'navCV' },
   { id: 'contact', key: 'navContact' },
-] as const;
+];
 
 export default function SiteHeader() {
   const { theme, toggleTheme } = useTheme();
@@ -39,7 +46,8 @@ export default function SiteHeader() {
       },
       { rootMargin: '-45% 0px -50% 0px' }
     );
-    sections.forEach(({ id }) => {
+    navItems.forEach(({ id, isPage }) => {
+      if (isPage) return;
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
@@ -84,20 +92,38 @@ export default function SiteHeader() {
 
         {/* Anchors only resolve on the home page; elsewhere they route home first. */}
         <nav aria-label="Sections" className="hidden sm:flex items-center" style={{ gap: 'clamp(0.75rem, 2vw, 1.75rem)' }}>
-          {sections.map(({ id, key }) => (
-            <a
-              key={id}
-              href={onHome ? `#${id}` : `/#${id}`}
-              className="label"
-              style={{
-                textDecoration: 'none',
-                color: active === id ? 'var(--accent-teal)' : 'var(--text-grey)',
-                transition: 'color 0.2s ease',
-              }}
-            >
-              {t[key]}
-            </a>
-          ))}
+          {navItems.map(({ id, key, isPage }) => {
+            if (isPage) {
+              return (
+                <Link
+                  key={id}
+                  to={`/${id}`}
+                  className="label"
+                  style={{
+                    textDecoration: 'none',
+                    color: location.pathname.startsWith(`/${id}`) ? 'var(--accent-teal)' : 'var(--text-grey)',
+                    transition: 'color 0.2s ease',
+                  }}
+                >
+                  {t[key]}
+                </Link>
+              );
+            }
+            return (
+              <a
+                key={id}
+                href={onHome ? `#${id}` : `/#${id}`}
+                className="label"
+                style={{
+                  textDecoration: 'none',
+                  color: active === id ? 'var(--accent-teal)' : 'var(--text-grey)',
+                  transition: 'color 0.2s ease',
+                }}
+              >
+                {t[key]}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center" style={{ gap: '1rem' }}>
