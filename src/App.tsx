@@ -19,6 +19,7 @@ import NotFound from './pages/NotFound';
 const ArticleIndex = lazy(() => import('./pages/ArticleIndex'));
 const ArticleReader = lazy(() => import('./pages/ArticleReader'));
 const StoryPage = lazy(() => import('./pages/StoryPage'));
+const EditorPage = lazy(() => import('./pages/EditorPage'));
 
 function HomePage() {
   useChoreography();
@@ -71,6 +72,7 @@ function AnimatedRoutes() {
         <Routes location={location}>
           <Route path="/" element={<HomePage />} />
           <Route path="/story" element={<StoryPage />} />
+          <Route path="/editor" element={<EditorPage />} />
           <Route path="/writing" element={<ArticleIndex />} />
           <Route path="/writing/:slug" element={<ArticleReader />} />
           <Route path="*" element={<NotFound />} />
