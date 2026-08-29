@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function GallerySection() {
@@ -90,9 +91,9 @@ export default function GallerySection() {
         <div className="absolute top-1/2 -left-3 w-6 h-6 bg-[#F4F1EC] rounded-full -translate-y-1/2"></div>
         <div className="absolute top-1/2 -right-3 w-6 h-6 bg-[#F4F1EC] rounded-full -translate-y-1/2"></div>
 
-        <div className="text-center text-[10px] md:text-xs font-bold tracking-widest uppercase border-b border-dashed border-white/20 pb-4 mb-6">
+        <Link to="/story" className="block text-center text-[10px] md:text-xs font-bold tracking-widest uppercase border-b border-dashed border-white/20 pb-4 mb-6 cursor-pointer hover:opacity-70 transition-opacity" style={{ textDecoration: 'none', color: 'inherit' }}>
           check story
-        </div>
+        </Link>
 
         {/* Golden ornate frame mockup */}
         <div className="w-full aspect-square border-[6px] md:border-[10px] border-[#9c7c38] bg-[#222] p-2 md:p-3 shadow-inner relative">
