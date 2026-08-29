@@ -278,8 +278,8 @@ export default function StorySection() {
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
               <div className="w-full md:w-1/2">
                 <div className="aspect-[4/5] bg-gray-200 relative overflow-hidden border" style={{ borderColor: `${TEXT_DARK}30` }}>
-                  {/* Replace 'era_1.jpg' with your own image in public/images/ */}
-                  <img src="/images/era_1.jpg" alt="Era 1" className="w-full h-full object-cover" />
+                  {/* Replace 'era_1.jpeg' with your own image in public/images/ */}
+                  <img src="/images/era_1.jpeg" alt="Era 1" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 border-[1rem]" style={{ borderColor: BG_COLOR }}></div>
                 </div>
               </div>
@@ -295,8 +295,8 @@ export default function StorySection() {
             <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-24">
               <div className="w-full md:w-1/2">
                 <div className="aspect-[4/5] bg-gray-200 relative overflow-hidden border" style={{ borderColor: `${TEXT_DARK}30` }}>
-                  {/* Replace 'era_2.jpg' with your own image in public/images/ */}
-                  <img src="/images/era_2.jpg" alt="Era 2" className="w-full h-full object-cover" />
+                  {/* Replace 'era_2.jpeg' with your own image in public/images/ */}
+                  <img src="/images/era_2.jpeg" alt="Era 2" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 border-[1rem]" style={{ borderColor: BG_COLOR }}></div>
                 </div>
               </div>
@@ -312,8 +312,8 @@ export default function StorySection() {
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
               <div className="w-full md:w-1/2">
                 <div className="aspect-[4/5] bg-gray-200 relative overflow-hidden border" style={{ borderColor: `${TEXT_DARK}30` }}>
-                  {/* Replace 'era_3.jpg' with your own image in public/images/ */}
-                  <img src="/images/era_3.jpg" alt="Era 3" className="w-full h-full object-cover" />
+                  {/* Replace 'era_3.jpeg' with your own image in public/images/ */}
+                  <img src="/images/era_3.jpeg" alt="Era 3" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 border-[1rem]" style={{ borderColor: BG_COLOR }}></div>
                 </div>
               </div>
