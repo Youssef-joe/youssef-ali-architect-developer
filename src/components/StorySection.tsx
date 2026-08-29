@@ -10,7 +10,7 @@ const ACCENT_RED = '#FF2300';
 export default function StorySection() {
   const { language } = useLanguage();
   const sectionRef = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
@@ -35,43 +35,43 @@ export default function StorySection() {
   const noteClass = "border border-dashed p-4 font-mono text-[10px] tracking-widest uppercase opacity-70 w-64 leading-relaxed absolute z-20";
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="relative w-full pb-32"
       style={{ backgroundColor: BG_COLOR, color: TEXT_DARK }}
     >
       <div className="shell relative">
-        
+
         {/* --- HERO SECTION --- */}
         <div className="pt-24 md:pt-32 pb-32 flex flex-col md:flex-row items-center gap-12 relative">
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             className="w-full md:w-5/12 relative group"
           >
             <div className="aspect-[3/4] overflow-hidden border relative p-4 z-10" style={{ borderColor: `${TEXT_DARK}30` }}>
-              <motion.div 
+              <motion.div
                 initial={{ clipPath: 'inset(100% 0 0 0)' }}
                 animate={{ clipPath: 'inset(0% 0 0 0)' }}
                 transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                className="w-full h-full relative overflow-hidden" 
+                className="w-full h-full relative overflow-hidden"
                 style={{ border: `2px solid ${TEXT_DARK}` }}
               >
-                <motion.img 
+                <motion.img
                   initial={{ scale: 1.2 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 3, ease: 'easeOut' }}
-                  src="/images/art_deco_wisdom_hero.jpg" 
+                  src="/images/art_deco_wisdom_hero.jpg"
                   alt="Allegory of Wisdom"
                   className="w-full h-full object-cover grayscale-[20%] contrast-125"
                 />
               </motion.div>
             </div>
-            
+
             {/* Interface Note */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5, duration: 1 }}
@@ -83,20 +83,20 @@ export default function StorySection() {
           </motion.div>
 
           <div className="w-full md:w-7/12 z-10">
-            <motion.h1 
+            <motion.h1
               initial={{ y: 50, opacity: 0, clipPath: 'inset(100% 0 0 0)' }}
               animate={{ y: 0, opacity: 1, clipPath: 'inset(0% 0 0 0)' }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
               className="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.85] tracking-tighter uppercase"
               style={{ color: TEXT_DARK }}
             >
-              The <br/> Legend <br/> <span style={{ color: ACCENT_RED }}>of <br/> Youssef</span>
+              The <br /> Legend <br /> <span style={{ color: ACCENT_RED }}>of <br /> Youssef</span>
             </motion.h1>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 1 }}
-              className="mt-12 max-w-md font-mono text-sm tracking-widest uppercase opacity-80 leading-relaxed border-l-2 pl-6" 
+              className="mt-12 max-w-md font-mono text-sm tracking-widest uppercase opacity-80 leading-relaxed border-l-2 pl-6"
               style={{ borderColor: ACCENT_RED }}
             >
               Art Deco Allegories: Visualizing Time. A curated exploration of 1930s-inspired geometric bas-reliefs, rendered in vibrant reds and striking editorial contrast.
@@ -106,8 +106,8 @@ export default function StorySection() {
 
         {/* --- INTERACTIVE TIME GRID --- */}
         <div className="py-32 relative">
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -118,7 +118,7 @@ export default function StorySection() {
             <div className="h-px w-24 mx-auto" style={{ backgroundColor: ACCENT_RED }}></div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -132,7 +132,7 @@ export default function StorySection() {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto relative z-10"
           >
             {cards.map((card, i) => (
-              <motion.div 
+              <motion.div
                 key={card.id}
                 variants={{
                   hidden: { opacity: 0, y: 40 },
@@ -142,11 +142,11 @@ export default function StorySection() {
                 style={{ borderColor: `${TEXT_DARK}20`, backgroundColor: `${TEXT_DARK}05` }}
               >
                 {/* Background overlay for hover scale */}
-                <div 
+                <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-[1500ms] ease-out scale-100 group-hover:scale-[1.05]"
                   style={{ backgroundColor: `${ACCENT_RED}10` }}
                 ></div>
-                
+
                 <div className="relative z-10 flex flex-col items-center transform transition-transform duration-[1500ms] ease-out group-hover:scale-[1.05] group-hover:-translate-y-2">
                   <card.icon size={48} strokeWidth={1} style={{ color: ACCENT_RED }} className="mb-6 opacity-80" />
                   <h3 className="font-serif text-2xl uppercase tracking-wider mb-2">{card.title}</h3>
@@ -162,7 +162,7 @@ export default function StorySection() {
             ))}
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -176,7 +176,7 @@ export default function StorySection() {
 
         {/* --- EDITORIAL PARALLAX SECTION --- */}
         <div className="py-48 relative overflow-hidden">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -188,10 +188,10 @@ export default function StorySection() {
           </motion.div>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-16 md:gap-24">
-            
+
             {/* Progress */}
             <motion.div style={{ y: y1 }} className="flex flex-col items-center">
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -201,7 +201,7 @@ export default function StorySection() {
               >
                 <img src="/images/art_deco_circle_progress.jpg" alt="Progress" className="w-full h-full object-cover" />
               </motion.div>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.5, duration: 1 }}
@@ -215,7 +215,7 @@ export default function StorySection() {
 
             {/* Power */}
             <motion.div style={{ y: y2 }} className="flex flex-col items-center mt-24 md:mt-0">
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -225,7 +225,7 @@ export default function StorySection() {
               >
                 <img src="/images/art_deco_circle_power.jpg" alt="Power" className="w-full h-full object-cover" />
               </motion.div>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 1 }}
@@ -239,7 +239,7 @@ export default function StorySection() {
 
             {/* Motion */}
             <motion.div style={{ y: y3 }} className="flex flex-col items-center">
-              <motion.div 
+              <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -249,7 +249,7 @@ export default function StorySection() {
               >
                 <img src="/images/art_deco_circle_motion.jpg" alt="Motion" className="w-full h-full object-cover" />
               </motion.div>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.9, duration: 1 }}
@@ -266,14 +266,14 @@ export default function StorySection() {
 
         {/* --- LIFE CHAPTERS SECTION (USER EDITABLE) --- */}
         <div className="py-24 relative max-w-6xl mx-auto">
-          
+
           <div className="text-center mb-32">
             <h2 className="font-serif text-5xl md:text-7xl uppercase tracking-widest mb-6">The Eras</h2>
             <div className="h-px w-32 mx-auto" style={{ backgroundColor: ACCENT_RED }}></div>
           </div>
 
           <div className="flex flex-col gap-32">
-            
+
             {/* Chapter 1 */}
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
               <div className="w-full md:w-1/2">
@@ -330,7 +330,7 @@ export default function StorySection() {
 
         {/* --- FOOTER DETAILS --- */}
         <div className="pt-24 pb-12 border-t flex flex-col md:flex-row items-end justify-between gap-8 relative overflow-hidden" style={{ borderColor: `${TEXT_DARK}20` }}>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)' }}
             whileInView={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
@@ -356,18 +356,18 @@ export default function StorySection() {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 0.1, x: 0 }}
             transition={{ duration: 2, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="font-sans font-black text-6xl md:text-8xl tracking-tighter uppercase flex-shrink-0" 
+            className="font-sans font-black text-6xl md:text-8xl tracking-tighter uppercase flex-shrink-0"
             style={{ color: TEXT_DARK }}
           >
-            TICKETS
+
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}

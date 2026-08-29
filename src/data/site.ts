@@ -25,14 +25,14 @@ export const hero: Localized<{
   en: {
     name: 'Youssef Ali',
     role: 'Systems Engineer',
-    statement: 'I build real-time infrastructure — and, when the mood strikes, operating systems from scratch.',
+    statement: 'I build real-time infrastructure.. and, when the mood strikes, operating systems from scratch.',
     location: 'Cairo, Egypt',
     availability: 'Full-Stack Engineer at EnovaWorx',
   },
   ar: {
     name: 'يوسف علي',
     role: 'مهندس أنظمة',
-    statement: 'أبني بنية تحتية تعمل في الوقت الفعلي — وأحياناً أنظمة تشغيل من الصفر.',
+    statement: 'أبني بنية تحتية تعمل في الوقت الفعلي وأحياناً أنظمة تشغيل من الصفر.',
     location: 'القاهرة، مصر',
     availability: 'مهندس Full-Stack في إنوفاوركس',
   },
