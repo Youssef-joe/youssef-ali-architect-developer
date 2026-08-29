@@ -20,17 +20,17 @@ export default function StorySection() {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 180]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
-  const cards = [
-    { id: 1, icon: Sun, title: 'Morning', desc: 'The Rising Dawn' },
-    { id: 2, icon: Building2, title: 'Present', desc: 'The Active City' },
-    { id: 3, icon: Star, title: 'Evening', desc: 'The Eternal Signal' },
-    { id: 4, icon: Radio, title: 'Airwaves', desc: 'Transmission' },
-    { id: 5, icon: Zap, title: 'Energy', desc: 'Kinetic Potential' },
-    { id: 6, icon: Clock, title: 'Time', desc: 'The Relentless March' },
-    { id: 7, icon: Activity, title: 'Motion', desc: 'Constant Flux' },
-    { id: 8, icon: Shield, title: 'Guard', desc: 'The Bastion' },
-    { id: 9, icon: Wind, title: 'Ether', desc: 'Unseen Forces' },
-  ];
+  // const cards = [
+  //   { id: 1, icon: Sun, title: 'Morning', desc: 'The Rising Dawn' },
+  //   { id: 2, icon: Building2, title: 'Present', desc: 'The Active City' },
+  //   { id: 3, icon: Star, title: 'Evening', desc: 'The Eternal Signal' },
+  //   { id: 4, icon: Radio, title: 'Airwaves', desc: 'Transmission' },
+  //   { id: 5, icon: Zap, title: 'Energy', desc: 'Kinetic Potential' },
+  //   { id: 6, icon: Clock, title: 'Time', desc: 'The Relentless March' },
+  //   { id: 7, icon: Activity, title: 'Motion', desc: 'Constant Flux' },
+  //   { id: 8, icon: Shield, title: 'Guard', desc: 'The Bastion' },
+  //   { id: 9, icon: Wind, title: 'Ether', desc: 'Unseen Forces' },
+  // ];
 
   const noteClass = "border border-dashed p-4 font-mono text-[10px] tracking-widest uppercase opacity-70 w-64 leading-relaxed absolute z-20";
 
@@ -118,7 +118,7 @@ export default function StorySection() {
             <div className="h-px w-24 mx-auto" style={{ backgroundColor: ACCENT_RED }}></div>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -142,7 +142,7 @@ export default function StorySection() {
                 style={{ borderColor: `${TEXT_DARK}20`, backgroundColor: `${TEXT_DARK}05` }}
               >
                 {/* Background overlay for hover scale */}
-                <div
+          {/* <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-[1500ms] ease-out scale-100 group-hover:scale-[1.05]"
                   style={{ backgroundColor: `${ACCENT_RED}10` }}
                 ></div>
@@ -154,13 +154,14 @@ export default function StorySection() {
                 </div>
 
                 {/* Grid Decorative Corners */}
-                <div className="absolute top-2 left-2 w-2 h-2 border-t border-l" style={{ borderColor: `${TEXT_DARK}40` }}></div>
+          {/* <div className="absolute top-2 left-2 w-2 h-2 border-t border-l" style={{ borderColor: `${TEXT_DARK}40` }}></div>
                 <div className="absolute top-2 right-2 w-2 h-2 border-t border-r" style={{ borderColor: `${TEXT_DARK}40` }}></div>
                 <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l" style={{ borderColor: `${TEXT_DARK}40` }}></div>
                 <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r" style={{ borderColor: `${TEXT_DARK}40` }}></div>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div>  */}
+
 
           <motion.div
             initial={{ opacity: 0 }}
