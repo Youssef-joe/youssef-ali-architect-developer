@@ -3,9 +3,9 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Sun, Radio, Activity, Clock, Zap, Star, Shield, Building2, Wind } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const MOSS_GREEN = '#2A3B2C';
-const BRASS_GOLD = '#C5A059';
-const TERRACOTTA = '#B35A3B';
+const BG_COLOR = '#F4F1EC';
+const TEXT_DARK = '#1A1A1A';
+const ACCENT_RED = '#FF2300';
 
 export default function StorySection() {
   const { language } = useLanguage();
@@ -38,7 +38,7 @@ export default function StorySection() {
     <section 
       ref={sectionRef}
       className="relative w-full pb-32"
-      style={{ backgroundColor: MOSS_GREEN, color: BRASS_GOLD, margin: '-2rem 0 -6rem 0', padding: '2rem 0 6rem 0' }}
+      style={{ backgroundColor: BG_COLOR, color: TEXT_DARK }}
     >
       <div className="shell relative">
         
@@ -51,13 +51,13 @@ export default function StorySection() {
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             className="w-full md:w-5/12 relative group"
           >
-            <div className="aspect-[3/4] overflow-hidden border border-[#C5A059]/30 relative p-4 z-10">
+            <div className="aspect-[3/4] overflow-hidden border relative p-4 z-10" style={{ borderColor: `${TEXT_DARK}30` }}>
               <motion.div 
                 initial={{ clipPath: 'inset(100% 0 0 0)' }}
                 animate={{ clipPath: 'inset(0% 0 0 0)' }}
                 transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
                 className="w-full h-full relative overflow-hidden" 
-                style={{ border: `2px solid ${BRASS_GOLD}` }}
+                style={{ border: `2px solid ${TEXT_DARK}` }}
               >
                 <motion.img 
                   initial={{ scale: 1.2 }}
@@ -75,7 +75,8 @@ export default function StorySection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.5, duration: 1 }}
-              className={`${noteClass} -right-16 md:-right-32 top-1/4 bg-[#2A3B2C] border-[#B35A3B] text-[#B35A3B]`}
+              className={`${noteClass} -right-16 md:-right-32 top-1/4 bg-[#F4F1EC]`}
+              style={{ borderColor: `${ACCENT_RED}50`, color: ACCENT_RED }}
             >
               [INTERFACE NOTE: MASKED TEXT REVEAL: Header 'LEGEND' curtains up on scroll. Cubic-Bezier eased.]
             </motion.div>
@@ -87,18 +88,18 @@ export default function StorySection() {
               animate={{ y: 0, opacity: 1, clipPath: 'inset(0% 0 0 0)' }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
               className="font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.85] tracking-tighter uppercase"
-              style={{ color: BRASS_GOLD }}
+              style={{ color: TEXT_DARK }}
             >
-              The <br/> Legend <br/> <span style={{ color: TERRACOTTA }}>of <br/> Youssef</span>
+              The <br/> Legend <br/> <span style={{ color: ACCENT_RED }}>of <br/> Youssef</span>
             </motion.h1>
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 1 }}
               className="mt-12 max-w-md font-mono text-sm tracking-widest uppercase opacity-80 leading-relaxed border-l-2 pl-6" 
-              style={{ borderColor: TERRACOTTA }}
+              style={{ borderColor: ACCENT_RED }}
             >
-              Art Deco Allegories: Visualizing Time. A curated exploration of 1930s-inspired geometric bas-reliefs, rendered in deep moss green and brass-gold.
+              Art Deco Allegories: Visualizing Time. A curated exploration of 1930s-inspired geometric bas-reliefs, rendered in vibrant reds and striking editorial contrast.
             </motion.div>
           </div>
         </div>
@@ -114,7 +115,7 @@ export default function StorySection() {
             className="text-center mb-16"
           >
             <h2 className="font-serif text-4xl md:text-5xl uppercase tracking-widest mb-4">Chronicles of the Era</h2>
-            <div className="h-px w-24 mx-auto" style={{ backgroundColor: TERRACOTTA }}></div>
+            <div className="h-px w-24 mx-auto" style={{ backgroundColor: ACCENT_RED }}></div>
           </motion.div>
 
           <motion.div 
@@ -137,26 +138,26 @@ export default function StorySection() {
                   hidden: { opacity: 0, y: 40 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
                 }}
-                className="group relative aspect-square border border-[#C5A059]/20 overflow-hidden cursor-pointer flex flex-col items-center justify-center p-8 transition-colors duration-700 hover:border-[#B35A3B]/60"
-                style={{ backgroundColor: 'rgba(197, 160, 89, 0.03)' }}
+                className="group relative aspect-square border overflow-hidden cursor-pointer flex flex-col items-center justify-center p-8 transition-colors duration-700"
+                style={{ borderColor: `${TEXT_DARK}20`, backgroundColor: `${TEXT_DARK}05` }}
               >
                 {/* Background overlay for hover scale */}
                 <div 
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-[1500ms] ease-out scale-100 group-hover:scale-[1.05]"
-                  style={{ backgroundColor: 'rgba(179, 90, 59, 0.05)' }}
+                  style={{ backgroundColor: `${ACCENT_RED}10` }}
                 ></div>
                 
                 <div className="relative z-10 flex flex-col items-center transform transition-transform duration-[1500ms] ease-out group-hover:scale-[1.05] group-hover:-translate-y-2">
-                  <card.icon size={48} strokeWidth={1} style={{ color: TERRACOTTA }} className="mb-6 opacity-80" />
+                  <card.icon size={48} strokeWidth={1} style={{ color: ACCENT_RED }} className="mb-6 opacity-80" />
                   <h3 className="font-serif text-2xl uppercase tracking-wider mb-2">{card.title}</h3>
                   <p className="font-mono text-xs tracking-widest uppercase opacity-50">{card.desc}</p>
                 </div>
 
                 {/* Grid Decorative Corners */}
-                <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-[#C5A059]/40"></div>
-                <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-[#C5A059]/40"></div>
-                <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-[#C5A059]/40"></div>
-                <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-[#C5A059]/40"></div>
+                <div className="absolute top-2 left-2 w-2 h-2 border-t border-l" style={{ borderColor: `${TEXT_DARK}40` }}></div>
+                <div className="absolute top-2 right-2 w-2 h-2 border-t border-r" style={{ borderColor: `${TEXT_DARK}40` }}></div>
+                <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l" style={{ borderColor: `${TEXT_DARK}40` }}></div>
+                <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r" style={{ borderColor: `${TEXT_DARK}40` }}></div>
               </motion.div>
             ))}
           </motion.div>
@@ -166,7 +167,8 @@ export default function StorySection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 1, duration: 1 }}
-            className={`${noteClass} -left-8 md:-left-24 bottom-1/4 bg-[#2A3B2C] border-[#C5A059] text-[#C5A059]`}
+            className={`${noteClass} -left-8 md:-left-24 bottom-1/4 bg-[#F4F1EC]`}
+            style={{ borderColor: `${TEXT_DARK}30`, color: `${TEXT_DARK}70` }}
           >
             [HOVER NOTE: KEN BURNS EFFECT: Slow, eased 1.05x scale over 1.5s]
           </motion.div>
@@ -179,7 +181,8 @@ export default function StorySection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className={`${noteClass} left-0 top-12 bg-[#2A3B2C] border-[#B35A3B] text-[#B35A3B]`}
+            className={`${noteClass} left-0 top-12 bg-[#F4F1EC]`}
+            style={{ borderColor: `${ACCENT_RED}50`, color: ACCENT_RED }}
           >
             [INTERFACE NOTE: PARALLAX SCROLL: Background patterns and sculpture circles move on separate Y-axis offsets.]
           </motion.div>
@@ -193,7 +196,8 @@ export default function StorySection() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-[6px] border-[#2A3B2C] outline outline-2 outline-[#C5A059] relative z-10 shadow-2xl"
+                className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-[6px] outline outline-2 relative z-10 shadow-2xl"
+                style={{ borderColor: BG_COLOR, outlineColor: TEXT_DARK }}
               >
                 <img src="/images/art_deco_circle_progress.jpg" alt="Progress" className="w-full h-full object-cover" />
               </motion.div>
@@ -206,7 +210,7 @@ export default function StorySection() {
               >
                 Progress
               </motion.div>
-              <div className="h-8 w-px mt-4" style={{ backgroundColor: TERRACOTTA }}></div>
+              <div className="h-8 w-px mt-4" style={{ backgroundColor: ACCENT_RED }}></div>
             </motion.div>
 
             {/* Power */}
@@ -216,7 +220,8 @@ export default function StorySection() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                className="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-[8px] border-[#2A3B2C] outline outline-[3px] outline-[#B35A3B] relative z-10 shadow-2xl"
+                className="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-[8px] outline outline-[3px] relative z-10 shadow-2xl"
+                style={{ borderColor: BG_COLOR, outlineColor: ACCENT_RED }}
               >
                 <img src="/images/art_deco_circle_power.jpg" alt="Power" className="w-full h-full object-cover" />
               </motion.div>
@@ -225,11 +230,11 @@ export default function StorySection() {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.7, duration: 1 }}
                 viewport={{ once: true }}
-                className="mt-8 font-serif text-xl tracking-widest uppercase" style={{ color: TERRACOTTA }}
+                className="mt-8 font-serif text-xl tracking-widest uppercase" style={{ color: ACCENT_RED }}
               >
                 Power
               </motion.div>
-              <div className="h-8 w-px mt-4" style={{ backgroundColor: BRASS_GOLD }}></div>
+              <div className="h-8 w-px mt-4" style={{ backgroundColor: TEXT_DARK }}></div>
             </motion.div>
 
             {/* Motion */}
@@ -239,7 +244,8 @@ export default function StorySection() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-                className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-[6px] border-[#2A3B2C] outline outline-2 outline-[#C5A059] relative z-10 shadow-2xl"
+                className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-[6px] outline outline-2 relative z-10 shadow-2xl"
+                style={{ borderColor: BG_COLOR, outlineColor: TEXT_DARK }}
               >
                 <img src="/images/art_deco_circle_motion.jpg" alt="Motion" className="w-full h-full object-cover" />
               </motion.div>
@@ -252,14 +258,14 @@ export default function StorySection() {
               >
                 Motion
               </motion.div>
-              <div className="h-8 w-px mt-4" style={{ backgroundColor: TERRACOTTA }}></div>
+              <div className="h-8 w-px mt-4" style={{ backgroundColor: ACCENT_RED }}></div>
             </motion.div>
 
           </div>
         </div>
 
         {/* --- FOOTER DETAILS --- */}
-        <div className="pt-24 pb-12 border-t border-[#C5A059]/20 flex flex-col md:flex-row items-end justify-between gap-8 relative overflow-hidden">
+        <div className="pt-24 pb-12 border-t flex flex-col md:flex-row items-end justify-between gap-8 relative overflow-hidden" style={{ borderColor: `${TEXT_DARK}20` }}>
           <motion.div 
             initial={{ opacity: 0, clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)' }}
             whileInView={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
@@ -267,20 +273,20 @@ export default function StorySection() {
             viewport={{ once: true, margin: "-50px" }}
             className="flex-1 max-w-xl"
           >
-            <div className="font-serif italic text-6xl md:text-8xl mb-8" style={{ fontFamily: '"Brush Script MT", "Snell Roundhand", cursive', color: TERRACOTTA }}>
+            <div className="font-serif italic text-6xl md:text-8xl mb-8" style={{ fontFamily: '"Brush Script MT", "Snell Roundhand", cursive', color: ACCENT_RED }}>
               Ali
             </div>
             <div className="grid grid-cols-3 gap-4 font-mono text-[10px] tracking-widest uppercase opacity-70 leading-relaxed">
               <div>
-                <strong className="block mb-2 text-[#C5A059]">Morning</strong>
+                <strong className="block mb-2" style={{ color: TEXT_DARK }}>Morning</strong>
                 The genesis of form and function.
               </div>
               <div>
-                <strong className="block mb-2 text-[#C5A059]">Present</strong>
+                <strong className="block mb-2" style={{ color: TEXT_DARK }}>Present</strong>
                 The industrial heartbeat of the metropolis.
               </div>
               <div>
-                <strong className="block mb-2 text-[#C5A059]">Evening</strong>
+                <strong className="block mb-2" style={{ color: TEXT_DARK }}>Evening</strong>
                 The transmission of eternal signals.
               </div>
             </div>
@@ -292,7 +298,7 @@ export default function StorySection() {
             transition={{ duration: 2, ease: "easeOut" }}
             viewport={{ once: true }}
             className="font-sans font-black text-6xl md:text-8xl tracking-tighter uppercase flex-shrink-0" 
-            style={{ color: BRASS_GOLD }}
+            style={{ color: TEXT_DARK }}
           >
             TICKETS
           </motion.div>
@@ -302,7 +308,8 @@ export default function StorySection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
             viewport={{ once: true }}
-            className={`${noteClass} right-0 top-12 bg-[#2A3B2C] border-[#C5A059] text-[#C5A059]`}
+            className={`${noteClass} right-0 top-12 bg-[#F4F1EC]`}
+            style={{ borderColor: `${TEXT_DARK}30`, color: `${TEXT_DARK}70` }}
           >
             [INTERFACE NOTE: GEOMETRIC MASK REVEAL: Illustrations swipe in with a starburst/angled clip-path mask on section mount.]
           </motion.div>

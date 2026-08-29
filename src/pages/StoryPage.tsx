@@ -11,13 +11,13 @@ export default function StoryPage() {
   const t = ui[language];
 
   return (
-    <div style={{ backgroundColor: '#2A3B2C', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: 'var(--bg-warm-white)', minHeight: '100vh' }}>
       <SiteHeader />
-      <main>
+      <main style={{ paddingTop: 'clamp(5rem, 10vh, 8rem)', paddingBottom: 'var(--section-gap)' }}>
         <StorySection />
         
         <div className="shell text-center py-12">
-          <Link to="/" className="label" style={{ display: 'inline-block', color: '#C5A059', textDecoration: 'none' }}>
+          <Link to="/" className="label" style={{ display: 'inline-block', color: 'var(--text-grey)', textDecoration: 'none' }}>
             ← {t.backHome}
           </Link>
         </div>
