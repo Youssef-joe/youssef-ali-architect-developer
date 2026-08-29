@@ -46,17 +46,17 @@ export default function GallerySection() {
         {/* Center overlaid text */}
         <div className="absolute top-[45%] left-[10%] md:left-[30%] mix-blend-overlay">
           <h1 className="text-[15vw] md:text-[12vw] font-serif leading-[0.8] text-white/90 uppercase tracking-tighter mix-blend-overlay">
-            IS ALWAYS
+            ALWAYS
           </h1>
         </div>
 
         {/* Bottom right text */}
         <div className="absolute bottom-[10%] right-[4%] md:right-[8%] text-right flex flex-col items-end">
           <div className="italic font-light lowercase text-[14vw] md:text-[9vw] text-[#FF2300] -mb-4 md:-mb-8 mr-4 z-10" style={{ fontFamily: '"Brush Script MT", "Snell Roundhand", cursive' }}>
-            A Story
+            TELLS
           </div>
           <h1 className="font-serif uppercase text-[20vw] md:text-[14vw] leading-[0.75] text-[#FF2300] tracking-tighter">
-            TELLS
+            A STORY
           </h1>
         </div>
 

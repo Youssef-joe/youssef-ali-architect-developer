@@ -27,6 +27,11 @@ export default function SiteHeader() {
   const onHome = location.pathname === '/';
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string>('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -129,6 +134,17 @@ export default function SiteHeader() {
         <div className="flex items-center" style={{ gap: '1rem' }}>
           <button
             type="button"
+            className="sm:hidden"
+            style={chip}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent-teal)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-grey)'; }}
+          >
+            {mobileMenuOpen ? '✕' : '☰'}
+          </button>
+          <button
+            type="button"
             style={chip}
             onClick={toggleLanguage}
             aria-label={t.toggleLang}
@@ -149,6 +165,57 @@ export default function SiteHeader() {
           </button>
         </div>
       </div>
+
+      {mobileMenuOpen && (
+        <nav
+          className="sm:hidden flex flex-col border-t"
+          style={{
+            borderColor: 'var(--border-light)',
+            backgroundColor: scrolled ? 'transparent' : 'var(--bg-warm-white)',
+          }}
+        >
+          {navItems.map(({ id, key, isPage }) => {
+            const commonProps = {
+              key: id,
+              className: "label",
+              style: {
+                textDecoration: 'none',
+                padding: '1.25rem var(--gutter)',
+                borderBottom: '1px solid var(--border-light)',
+                transition: 'color 0.2s ease',
+              },
+              onClick: () => setMobileMenuOpen(false),
+            };
+
+            if (isPage) {
+              return (
+                <Link
+                  to={`/${id}`}
+                  {...commonProps}
+                  style={{
+                    ...commonProps.style,
+                    color: location.pathname.startsWith(`/${id}`) ? 'var(--accent-teal)' : 'var(--text-charcoal)'
+                  }}
+                >
+                  {t[key]}
+                </Link>
+              );
+            }
+            return (
+              <a
+                href={onHome ? `#${id}` : `/#${id}`}
+                {...commonProps}
+                style={{
+                  ...commonProps.style,
+                  color: active === id ? 'var(--accent-teal)' : 'var(--text-charcoal)'
+                }}
+              >
+                {t[key]}
+              </a>
+            );
+          })}
+        </nav>
+      )}
     </header>
   );
 }
