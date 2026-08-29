@@ -264,6 +264,70 @@ export default function StorySection() {
           </div>
         </div>
 
+        {/* --- LIFE CHAPTERS SECTION (USER EDITABLE) --- */}
+        <div className="py-24 relative max-w-6xl mx-auto">
+          
+          <div className="text-center mb-32">
+            <h2 className="font-serif text-5xl md:text-7xl uppercase tracking-widest mb-6">The Eras</h2>
+            <div className="h-px w-32 mx-auto" style={{ backgroundColor: ACCENT_RED }}></div>
+          </div>
+
+          <div className="flex flex-col gap-32">
+            
+            {/* Chapter 1 */}
+            <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
+              <div className="w-full md:w-1/2">
+                <div className="aspect-[4/5] bg-gray-200 relative overflow-hidden border" style={{ borderColor: `${TEXT_DARK}30` }}>
+                  {/* Replace 'era_1.jpg' with your own image in public/images/ */}
+                  <img src="/images/era_1.jpg" alt="Era 1" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 border-[1rem]" style={{ borderColor: BG_COLOR }}></div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2">
+                <h3 className="font-serif text-4xl mb-4 uppercase" style={{ color: ACCENT_RED }}>Chapter I: The Beginning</h3>
+                <p className="font-mono text-sm leading-loose opacity-80" style={{ color: TEXT_DARK }}>
+                  Write about the first era of your life here. You can describe your origins, the early days of your journey, and the foundational moments that shaped your perspective.
+                </p>
+              </div>
+            </div>
+
+            {/* Chapter 2 */}
+            <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-24">
+              <div className="w-full md:w-1/2">
+                <div className="aspect-[4/5] bg-gray-200 relative overflow-hidden border" style={{ borderColor: `${TEXT_DARK}30` }}>
+                  {/* Replace 'era_2.jpg' with your own image in public/images/ */}
+                  <img src="/images/era_2.jpg" alt="Era 2" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 border-[1rem]" style={{ borderColor: BG_COLOR }}></div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2">
+                <h3 className="font-serif text-4xl mb-4 uppercase" style={{ color: ACCENT_RED }}>Chapter II: The Ascent</h3>
+                <p className="font-mono text-sm leading-loose opacity-80" style={{ color: TEXT_DARK }}>
+                  Write about the middle era of your life here. This could be your professional growth, major milestones, or the challenges you overcame.
+                </p>
+              </div>
+            </div>
+
+            {/* Chapter 3 */}
+            <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
+              <div className="w-full md:w-1/2">
+                <div className="aspect-[4/5] bg-gray-200 relative overflow-hidden border" style={{ borderColor: `${TEXT_DARK}30` }}>
+                  {/* Replace 'era_3.jpg' with your own image in public/images/ */}
+                  <img src="/images/era_3.jpg" alt="Era 3" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 border-[1rem]" style={{ borderColor: BG_COLOR }}></div>
+                </div>
+              </div>
+              <div className="w-full md:w-1/2">
+                <h3 className="font-serif text-4xl mb-4 uppercase" style={{ color: ACCENT_RED }}>Chapter III: The Vision</h3>
+                <p className="font-mono text-sm leading-loose opacity-80" style={{ color: TEXT_DARK }}>
+                  Write about the present or the future here. Discuss your current philosophies, your architectural vision, and what you aim to build next.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         {/* --- FOOTER DETAILS --- */}
         <div className="pt-24 pb-12 border-t flex flex-col md:flex-row items-end justify-between gap-8 relative overflow-hidden" style={{ borderColor: `${TEXT_DARK}20` }}>
           <motion.div 
