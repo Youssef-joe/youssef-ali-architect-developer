@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { marked } from 'marked';
-import SiteHeader from '../components/SiteHeader';
+import gsap from 'gsap';
 import { useLanguage } from '../contexts/LanguageContext';
 import { getArticle, formatDate } from '../lib/articles';
 import { ui } from '../data/site';
@@ -16,6 +16,9 @@ export default function ArticleReader() {
   const [copied, setCopied] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
   const html = useMemo(() => (article ? marked.parse(article.body) as string : ''), [article]);
 
   useEffect(() => {
@@ -28,8 +31,6 @@ export default function ArticleReader() {
     return () => { document.title = 'Youssef Ali — Systems Engineer'; };
   }, [article]);
 
-  // Reading progress. rAF-throttled and writes only a transform, so scrolling
-  // never triggers layout.
   useEffect(() => {
     let frame = 0;
     const onScroll = () => {
@@ -45,16 +46,31 @@ export default function ArticleReader() {
     return () => { window.removeEventListener('scroll', onScroll); cancelAnimationFrame(frame); };
   }, []);
 
+  useEffect(() => {
+    if (article && titleRef.current && contentRef.current) {
+      const tl = gsap.timeline();
+      tl.fromTo(
+        titleRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }
+      ).fromTo(
+        contentRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power2.out' },
+        '-=0.6'
+      );
+    }
+  }, [article]);
+
   if (!article) {
     return (
-      <div style={{ backgroundColor: 'var(--bg-warm-white)', minHeight: '100vh' }}>
-        <SiteHeader />
-        <main className="shell" style={{ paddingTop: 'clamp(7rem, 14vh, 11rem)', paddingBottom: 'var(--section-gap)' }}>
-          <h1 className="heading" style={{ marginBottom: '1rem' }}>{t.articleMissing}</h1>
-          <Link to="/writing" className="label" style={{ color: 'var(--accent-teal)', textDecoration: 'none' }}>
-            ← {t.sectionWriting}
+      <div className="bg-parchment min-h-screen font-editorial-new text-ink-black flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="font-canopee text-6xl mb-4">{t.articleMissing || "NOT FOUND"}</h1>
+          <Link to="/writing" className="font-mono uppercase tracking-widest text-ember-orange hover:underline">
+            ← TABLE OF CONTENTS
           </Link>
-        </main>
+        </div>
       </div>
     );
   }
@@ -70,69 +86,92 @@ export default function ArticleReader() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2200);
     } catch {
-      /* user dismissed the share sheet — nothing to do */
+      // user dismissed the share sheet
     }
   };
 
   const isRTL = article.lang === 'ar';
 
   return (
-    <div style={{ backgroundColor: 'var(--bg-warm-white)', minHeight: '100vh' }}>
+    <div className="bg-parchment min-h-screen text-ink-black selection:bg-ink-black selection:text-parchment font-editorial-new overflow-x-hidden">
+      {/* Progress Bar */}
       <div
         aria-hidden="true"
-        style={{
-          position: 'fixed', top: 0, insetInline: 0, height: '2px', zIndex: 60,
-          background: 'var(--accent-teal)', transformOrigin: 'left center',
-          transform: `scaleX(${progress})`, willChange: 'transform',
-        }}
+        className="fixed top-0 left-0 right-0 h-[3px] z-50 bg-ember-orange origin-left will-change-transform"
+        style={{ transform: `scaleX(${progress})` }}
       />
-      <SiteHeader />
 
-      <main
-        className="shell"
-        dir={isRTL ? 'rtl' : 'ltr'}
-        style={{ paddingTop: 'clamp(7rem, 14vh, 11rem)', paddingBottom: 'var(--section-gap)' }}
-      >
-        <article style={{ maxWidth: '72ch', marginInline: 'auto' }}>
-          <header style={{ marginBottom: 'clamp(2.5rem, 6vw, 4rem)' }}>
-            <div className="flex flex-wrap items-center" style={{ gap: '0.5rem 1rem', marginBottom: '1.25rem' }}>
-              <span className="label">{formatDate(article.date, article.lang)}</span>
-              <span className="label" style={{ color: 'var(--text-faint)' }}>
-                {article.readingMinutes} {t.minRead}
-              </span>
-              {article.tags.map((tag) => (
-                <span key={tag} className="label" style={{ border: '1px solid var(--border-light)', borderRadius: '999px', padding: '2px 9px', letterSpacing: '0.06em' }}>
-                  {tag}
-                </span>
-              ))}
+      {/* Editorial Header Bar */}
+      <header className="w-full border-b border-ink-black/20 px-6 py-4 flex justify-between items-center bg-parchment sticky top-0 z-40">
+        <Link to="/" className="font-canopee text-2xl uppercase tracking-tight text-ink-black hover:text-ember-orange transition-colors">
+          Youssef Ali
+        </Link>
+        <Link to="/writing" className="font-mono text-xs uppercase tracking-widest text-charcoal hover:text-ink-black transition-colors">
+          TABLE OF CONTENTS
+        </Link>
+      </header>
+
+      <main dir={isRTL ? 'rtl' : 'ltr'} className="w-full">
+        <article className="w-full">
+          {/* Display Banner Title Block */}
+          <header className="w-full bg-ink-black text-parchment border-b border-ink-black pb-16 pt-24 px-6 lg:px-12 flex flex-col items-center justify-center text-center">
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-8 opacity-70">
+              <span className="font-mono text-xs uppercase tracking-widest">{formatDate(article.date, article.lang)}</span>
+              <span className="w-1.5 h-1.5 bg-ember-orange rounded-full"></span>
+              <span className="font-mono text-xs uppercase tracking-widest">{article.readingMinutes} {t.minRead}</span>
             </div>
 
-            <h1 className="display" style={{ fontSize: 'var(--step-2)', marginBottom: '1rem' }}>{article.title}</h1>
+            <h1 ref={titleRef} className="font-canopee uppercase leading-[0.85] tracking-[-0.04em] max-w-[12ch] mx-auto text-balance" style={{ fontSize: 'clamp(4rem, 12vw, 10rem)' }}>
+              {article.title}
+            </h1>
+            
             {article.description && (
-              <p className="subheading" style={{ color: 'var(--text-grey)' }}>{article.description}</p>
+              <p className="font-editorial-new italic text-2xl md:text-4xl mt-12 max-w-3xl mx-auto text-parchment/80 leading-snug">
+                {article.description}
+              </p>
             )}
-
-            <button
-              type="button"
-              onClick={share}
-              className="label"
-              style={{
-                marginTop: '1.75rem', background: 'none', cursor: 'pointer',
-                border: '1px solid var(--border-strong)', borderRadius: '999px',
-                padding: '7px 16px', color: 'var(--text-charcoal)', transition: 'color 0.2s ease, border-color 0.2s ease',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent-teal)'; e.currentTarget.style.borderColor = 'var(--accent-teal)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-charcoal)'; e.currentTarget.style.borderColor = 'var(--border-strong)'; }}
-            >
-              {copied ? t.shareCopied : t.share}
-            </button>
           </header>
 
-          <div className="article-body" dangerouslySetInnerHTML={{ __html: html }} />
+          {/* Article Layout */}
+          <div ref={contentRef} className="max-w-[1200px] mx-auto px-6 lg:px-12 py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+            
+            {/* Sidebar / Metadata */}
+            <aside className="lg:col-span-3 flex flex-col gap-12 border-b lg:border-b-0 lg:border-r border-ink-black/20 pb-12 lg:pb-0 lg:pr-12">
+              <div>
+                <h4 className="font-mono text-xs uppercase tracking-widest text-charcoal mb-4 border-b border-ink-black/20 pb-2">Classifications</h4>
+                <div className="flex flex-col gap-2 mt-4">
+                  {article.tags.map((tag) => (
+                    <span key={tag} className="font-editorial-new italic text-xl text-ink-black">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="font-mono text-xs uppercase tracking-widest text-charcoal mb-4 border-b border-ink-black/20 pb-2">Actions</h4>
+                <button
+                  type="button"
+                  onClick={share}
+                  className="font-mono text-xs uppercase tracking-widest mt-4 hover:text-ember-orange transition-colors w-full text-left"
+                >
+                  {copied ? (t.shareCopied || "Copied to clipboard") : (t.share || "Share Chapter")}
+                </button>
+              </div>
+            </aside>
 
-          <footer style={{ marginTop: 'clamp(3rem, 7vw, 5rem)', borderTop: '1px solid var(--border-light)', paddingTop: '1.5rem' }}>
-            <Link to="/writing" className="label" style={{ color: 'var(--text-grey)', textDecoration: 'none' }}>
-              ← {t.sectionWriting}
+            {/* Main Content */}
+            <div className="lg:col-span-8 prose-article">
+              <div 
+                className="article-body font-editorial-new text-2xl leading-relaxed text-ink-black text-justify" 
+                dangerouslySetInnerHTML={{ __html: html }} 
+              />
+            </div>
+          </div>
+
+          <footer className="max-w-[1200px] mx-auto px-6 lg:px-12 py-16 border-t border-ink-black/20 flex justify-center">
+            <Link to="/writing" className="font-canopee text-5xl text-ink-black hover:text-ember-orange transition-colors">
+              ← Table of Contents
             </Link>
           </footer>
         </article>
